@@ -15,9 +15,12 @@
     </style>
 </head>
 <body>
+    
     <h1>Danh sách người dùng </h1>
 
-    <h2><a href="">Thêm mới user</a></h2>
+    <h2><a href="{{ route('role.index')}}">List role</a></h2>
+
+    <h2><a href="{{ route('user.indexform')}}">Thêm mới user</a></h2>
 
     <table>
         <thead>
@@ -55,12 +58,11 @@
                             <button type="submit" onclick="return confirm('xác nhận xoá người user này không')">
 
                                 XoÁ
+                                
                             </button>
                         </form>
                         
-                        <a href="" >
-                            
-                            Sửa</a>
+                        <a href="" >Sửa</a>
                         
                     </td>
 

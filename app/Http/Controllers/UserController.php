@@ -4,39 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Role;
+
 use App\Models\User;
+
+use App\Models\Profile;
 
 class UserController extends Controller
 {
-    // HIỂN THỊ USER
+    // HIỂN THỊ LIST USER
     public function index() {
 
         $users = User::with(['profile','role'])->get();
 
-        return view('.users/user', compact('users'));
+        return view('.users/user-index', compact('users'));
     }
-    //CREATE USER
-    public function createnew() {
-        //index all('roles)
+    //INDEX FORM STORE USER
+    public function index_form() {
+
         $roles = Role::all();
 
-        return view('user.register',compact('roles'));
-
+        return view('.users/user-store', compact('roles'));
     }
 
-    //EDIT USER
-    public function edit($id) {
-
-        
-    }
-
-    //DELETE USER
-    public function destroy($id) {
-
-    $user =  User::findOrFail($id);
-    $user->delete();
-
-    return redirect()->route('user.index')->with('xoá thành công!');
-    }
-   
 }

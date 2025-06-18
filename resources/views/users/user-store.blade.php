@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/registercd.css') }}">
+
+    <title>Store User</title>
+</head>
+<body>
+    
+    <h1>Create new User</h1>
+
+    <h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
+
+    <div class="container_register">
+
+        <form action="{{ route('user.srore')}}" method="POST">
+
+         @csrf
+            <div class="item_register">
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email :(...@gmail.com) " required>
+
+            </div>
+
+            <div class="item_register">
+
+                <label for="password">Password :</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" name="password" required>
+
+            </div>
+
+            <div class="item_register">
+
+                <label for="fullname">Name Space :</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên " required>
+
+            </div>
+
+            <div class="item_register">
+
+                <label for="tel">Phone :</label>
+                <input type="tel" id="tel" placeholder="Nhập số điện thoại " name="tel" required>
+
+            </div>
+
+            <div class="item_register">
+
+                <label for="address">Address :</label>
+                <input type="text" id="address" placeholder="Nhập địa chỉ " name="address" required>
+
+            </div>
+
+            <div class="item_register" >
+
+                <label for="date">Birthday :</label>
+                <input type="date" id="date" name="date" required  >
+
+            </div>
+
+            <div class="item_register">
+
+                <label for="role">Role</label>
+
+                    <select name="role" id="role">
+                        <option value="role_id"></option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id}}">{{ $role->id }} - {{  $role->name }} </option>
+                            @endforeach
+                    </select>
+
+            </div>
+
+
+            <button type="submit">THỰC HIỆN</button>
+
+            
+
+            
+        
+        </form>
+
+    </div>
+    
+
+
+</body>
+</html>

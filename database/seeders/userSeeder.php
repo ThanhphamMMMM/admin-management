@@ -20,30 +20,30 @@ class UserSeeder extends Seeder
             ],
 
             ['name' => 'giám đốc',
-                'descride' => ' quyền-vip pro',
+                'descride' => ' quyền-vip pro(1)',
             ],
             [
                 'name' => 'HR',
-                'descride' => ' quyền-pro',
+                'descride' => ' quyền-pro(2)',
             ],
 
             [
                 'name' => 'nhan viên',
-                'descride' => 'ko quyền'
+                'descride' => 'ko quyền(3)',
             ]
         ]);
 
         $user = User::create([
-            'email' => 'vungocquangg@gmail.com',
+            'email' => 'vuvanhoa@gmail.com',
             'password' => Hash::make('thanh134d232'),
             'role_id' => Role::first()->id,
         ]);
 
         $user->profile()->create([
-            'full_name' => 'ngoc quang',
-            'phone' => '1235567751',
-            'address' => 'quang ninh',
-            'birthday' => '2002-11-08',
+            'full_name' => 'vu van hoa',
+            'phone' => '0792879231',
+            'address' => 'ha noi moi',
+            'birthday' => '2001-11-08',
         ]);
     }
 }
