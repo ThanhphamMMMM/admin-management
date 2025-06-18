@@ -40,7 +40,7 @@ Route::get('/index-users', [UserController::class, 'index'])->name('user.index')
 //FORM-USER
 Route::get('/form-users', [UserController::class, 'index_form'])->name('user.indexform');
 //STORE-USER
-Route::post('/store-user', [RegisterController::class, 'store'])->name('user.srore');
+Route::post('/store-user', [UserController::class, 'store'])->name('user.srore');
 
 
 
