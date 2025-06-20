@@ -25,22 +25,33 @@ Route::get('/', function () {
 
 
 
-//ROLE
+//INDEX-ROLE
 Route::get('/index-roles',[RoleController::class, 'index'])->name('role.index');
-//FORM-ROLE
-Route::get('/form-roles',[RoleController::class, 'index_form'])->name('role.indexform');
-//STORE ROLE
-Route::post('/store-role',[RoleController::class, 'store'])->name('role.store');
-
+//CREATE-ROLE
+Route::get('/create-roles',[RoleController::class, 'create'])->name('role.create');
+//STORE-ROLE
+Route::post('/store-roles',[RoleController::class, 'store'])->name('role.store');
+//INDEX-EDIT ROLE
+Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('role.edit');
+//UPDATE-ROLE
+Route::post('/roles{id}',[RoleController::class,'update'])->name('role.update');
+// DESTROY-ROLE
+Route::delete('/roles/{id}',[RoleController::class,'destroy'])->name('role.destroy');
 
 
 
 // HIỂN THỊ USER
 Route::get('/index-users', [UserController::class, 'index'])->name('user.index');
-//FORM-USER
-Route::get('/form-users', [UserController::class, 'index_form'])->name('user.indexform');
+//CREATE-USER
+Route::get('/create-users', [UserController::class, 'create'])->name('user.create');
 //STORE-USER
-Route::post('/store-user', [UserController::class, 'store'])->name('user.srore');
+Route::post('/store-users', [UserController::class, 'store'])->name('user.srore');
+//EDIT-USER
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+//UPDATE-USER
+Route::post('/users/{id}', [UserController::class, 'update'])->name('user.update');
+//DESTROY-USER
+Route::delete('/user{id}',[UserController::class, 'destroy'])->name('user.destroy');
 
 
 
@@ -48,11 +59,4 @@ Route::post('/store-user', [UserController::class, 'store'])->name('user.srore')
 
 
 
-
-//DELETE USER
-Route::delete('/destroy-user{id}',[UserController::class, 'destroy'])->name('user.destroy');
-
-
-//UPDATE USER
-Route::get('/edit', [UserController::class, ])->name('user.update');
 

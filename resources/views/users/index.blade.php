@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <title>Document</title>
 </head>
 <body>
     <title>Danh sách người dùng</title>
-    <style>
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
 </head>
 <body>
     
     <h1>Danh sách người dùng </h1>
 
-    <h2><a href="{{ route('role.index')}}">List role</a></h2>
+    <h2><a href="{{ route('role.index')}}">List Role</a></h2>
 
-    <h2><a href="{{ route('user.indexform')}}">Thêm mới user</a></h2>
+    <h2><a href="{{ route('user.create')}}">Tạo mới User</a></h2>
 
     <table>
         <thead>
@@ -51,18 +47,19 @@
                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                     {{-- nút xoá user --}}
                     <td>
-
                         <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('xác nhận xoá người user này không')">
-
-                                XoÁ
-                                
+                                XoÁ                            
                             </button>
                         </form>
                         
-                        <a href="" >Sửa</a>
+                        <a href="{{ route('user.edit',$user->id)}}">                       
+                            <button>
+                                Sửa
+                            </button>
+                        </a>
                         
                     </td>
 

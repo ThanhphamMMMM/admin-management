@@ -14,21 +14,21 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // HIỂN THỊ LIST USER
+    // INDEX USER
     public function index() {
 
         $users = User::with(['profile','role'])->get();
 
-        return view('.users/user-index', compact('users'));
+        return view('users.index', compact('users'));
     }
-    //INDEX FORM STORE USER
-    public function index_form() {
+    //CREATE USER
+    public function create() {
 
         $roles = Role::all();
 
-        return view('.users/user-store', compact('roles'));
+        return view('users.create', compact('roles'));
     }
-
+    // STORE USER
     public function store(Request $request) {
          
         $request -> validate([
@@ -57,12 +57,76 @@ class UserController extends Controller
         $profile->address   =   $request->address;
         $profile->birthday  =   $request->date;
         $profile->user_id   =   $user->id; // Gắn khoá ngoại
-        $profile->save();
+        $profile->save(); 
+        
 
 
         $user->save(); // lưu vào CSDL
         return redirect()->route('user.index')->with('success', 'Thêm user thành công!');
 
+    }
+    public function edit($id) {
+
+        $user = User::findOrfail($id);
+
+        $roles = Role::all();
+
+
+        return view('users.edit',compact('user','roles'));
+    }
+    public function update(Request $request ,$id) {
+
+        $user = User::findOrfail($id);
+
+        $request->validate([
+
+            'email'     =>'required|email|unique:users,email',$id,   // kiểm tra email trong bảng users đã tồn tại chưa
+            'password'  =>'required|min:7',
+            'fullname'  =>'required',
+            'tel'       =>'required|max:10',
+            'address'   =>'required',
+            'date'      =>'required',
+            'role'      =>'required|exists:roles,id',          // kiểm tra  role có tồn tại ko
+
+        ]);
+
+        $user->email     = $request->email;
+        $user->role_id   = $request->role;
+
+        if ($request->filled('password')) {
+        $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+        
+
+        $profile = $user->profile;
+        if(!$request) {
+            $profile = new Profile();
+            $profile->user_id = $user->id;  
+        }
+        $profile->full_name =   $request->fullname;
+        $profile->phone     =   $request->tel;
+        $profile->address   =   $request->address;
+        $profile->birthday  =   $request->date;
+        $profile->user_id   =   $user->id; // Gắn khoá ngoại
+        $profile->save();
+        
+        
+
+        return redirect()->route('user.index')->with('success', 'Cập nhật user thành công!');
+
+    }
+
+
+
+    public function destroy($id) {
+
+        $user = User::findOrfail($id);
+
+        $user->delete() ;
+
+        return redirect()->route('user.index')->with('success', 'xoÁ user thành công!');
     }
 
 }
