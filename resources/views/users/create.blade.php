@@ -14,62 +14,75 @@
 
     <h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
 
+
     <div class="container">
 
-        <form action="{{ route('user.srore')}}" method="POST">
+        <form action="{{ route('user.store')}}" method="POST">
 
          @csrf
+
             <div class="item">
-
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="email" placeholder="Nhập email :(...@gmail.com) " required>
-
+                <input type="email" id="email" name="email" placeholder="Nhập email :(...@gmail.com) " required> <br>
+                                    @error('email')
+                        <div style="color:red;">{{ $message }}</div>
+                    @enderror
             </div>
 
-            <div class="item">
 
+            <div class="item">
                 <label for="password">Password :</label>
                 <input type="password" id="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" name="password" required>
-
+                                @error('password')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="item">
 
-                <label for="fullname">Name Space :</label>
+            <div class="item">
+                <label for="fullname">Full Name :</label>
                 <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên " required>
-
+                                @error('fullname')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="item">
 
+            <div class="item">
                 <label for="tel">Phone :</label>
                 <input type="tel" id="tel" placeholder="Nhập số điện thoại " name="tel" required>
-
+                                @error('tel')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="item">
-
                 <label for="address">Address :</label>
                 <input type="text" id="address" placeholder="Nhập địa chỉ " name="address" required>
-
+                                @error('address')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="item" >
 
+            <div class="item" >
                 <label for="date">Birthday :</label>
                 <input type="date" id="date" name="date" required  >
-
+                                @error('date')
+                    <div style="color:red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="item">
-
                 <label for="role">Role</label>
-
                     <select name="role" id="role">
                         <option value="role_id"></option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role->id}}">{{ $role->id }} - {{  $role->name }} </option>
                             @endforeach
+                                @error('date')
+                    <div style="color:red;">{{ $message }}</div>
+            @enderror
                     </select>
 
             </div>

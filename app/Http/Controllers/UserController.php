@@ -18,22 +18,18 @@ class UserController extends Controller
     public function index() {
 
         $users = User::with(['profile','role'])->get();
-
         return view('users.index', compact('users'));
     }
     //CREATE USER
     public function create() {
-
         $roles = Role::all();
-
         return view('users.create', compact('roles'));
     }
     // STORE USER
-    public function store(Request $request) {
-         
+    public function store(Request $request) {        
         $request -> validate([
             
-            'email'     =>'required|email|unique:users,email',   // kiểm tra email trong bảng users đã tồn tại chưa
+            'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',  // kiểm tra email trong bảng users đã tồn tại chưa
             'password'  =>'required|min:7',
             'fullname'  =>'required',
             'tel'       =>'required|max:10',
@@ -43,7 +39,7 @@ class UserController extends Controller
  
         ]);
 
-        
+
         $user = new User();
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -62,25 +58,21 @@ class UserController extends Controller
 
 
         $user->save(); // lưu vào CSDL
-        return redirect()->route('user.index')->with('success', 'Thêm user thành công!');
+        return redirect()->route('user.index')->with('thanh', 'Thêm user thành công!');
 
     }
     public function edit($id) {
-
-        $user = User::findOrfail($id);
-
+        $user = User::with('profile')->findOrfail($id);
         $roles = Role::all();
-
-
         return view('users.edit',compact('user','roles'));
     }
     public function update(Request $request ,$id) {
+        // dd($request->all());
 
         $user = User::findOrfail($id);
-
         $request->validate([
 
-            'email'     =>'required|email|unique:users,email',$id,   // kiểm tra email trong bảng users đã tồn tại chưa
+            'email'     =>'required|email|email',$id,   // kiểm tra email trong bảng users đã tồn tại chưa
             'password'  =>'required|min:7',
             'fullname'  =>'required',
             'tel'       =>'required|max:10',
@@ -101,10 +93,6 @@ class UserController extends Controller
         
 
         $profile = $user->profile;
-        if(!$request) {
-            $profile = new Profile();
-            $profile->user_id = $user->id;  
-        }
         $profile->full_name =   $request->fullname;
         $profile->phone     =   $request->tel;
         $profile->address   =   $request->address;

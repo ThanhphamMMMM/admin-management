@@ -45,7 +45,7 @@ Route::get('/index-users', [UserController::class, 'index'])->name('user.index')
 //CREATE-USER
 Route::get('/create-users', [UserController::class, 'create'])->name('user.create');
 //STORE-USER
-Route::post('/store-users', [UserController::class, 'store'])->name('user.srore');
+Route::post('/store-users', [UserController::class, 'store'])->name('user.store');
 //EDIT-USER
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 //UPDATE-USER

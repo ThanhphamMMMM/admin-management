@@ -22,12 +22,12 @@
 
                     <div class="item">
                         <label for="name">Name Role :</label>
-                        <input type="text" id="name" name="name" placeholder="Nhập vai trò muốn update " required>
+                        <input type="text" id="name" name="name" value="{{ old('name',$role->name) }}" placeholder="Nhập vai trò muốn update " required>
                     </div>
 
                     <div class="item">
                         <label for="disride">Discridetion :</label>
-                        <input type="text" id="descride" name="descride" placeholder="Mô tả tổng quan về vai trò mới ">
+                        <input type="text" id="descride" name="descride"  value="{{ old('descride',$role->descride)}}" placeholder="Mô tả tổng quan về vai trò mới ">
                     </div>
 
                     <button type="submit"> Cập Nhật</button>

@@ -18,6 +18,12 @@
 
     <h2><a href="{{ route('user.create')}}">Tạo mới User</a></h2>
 
+     @if(session('thanh'))
+    
+    <div style="background: red" >{{ session('thanh') }}</div>
+
+    @endif
+
     <table>
         <thead>
             <tr>

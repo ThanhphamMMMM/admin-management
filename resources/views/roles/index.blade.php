@@ -12,11 +12,12 @@
     <h1 id="h1">List of Roles</h1>
 
     <button type="button" onclick='document.getElementById("h1").innerHTML = "Hello JavaScript!"'>Click Me!</button>
-    
+     
     <h2><a href="{{ route('user.index')}}">List User </a></h2>
 
     <h2><a href="{{ route('role.create')}}">Tạo Mới Vai Trò </a></h2>
 
+    @error 
     
 
     <table>
