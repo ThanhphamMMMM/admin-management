@@ -26,9 +26,9 @@ class UserController extends Controller
         return view('users.create', compact('roles'));
     }
     // STORE USER
-    public function store(Request $request) {        
+    public function store(Request $request) {
         $request -> validate([
-            
+
             'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',  // kiểm tra email trong bảng users đã tồn tại chưa
             'password'  =>'required|min:7',
             'fullname'  =>'required',
@@ -36,7 +36,7 @@ class UserController extends Controller
             'address'   =>'required',
             'date'      =>'required',
             'role'      =>'required|exists:roles,id',          // kiểm tra  role có tồn tại ko
- 
+
         ]);
 
 
@@ -53,8 +53,8 @@ class UserController extends Controller
         $profile->address   =   $request->address;
         $profile->birthday  =   $request->date;
         $profile->user_id   =   $user->id; // Gắn khoá ngoại
-        $profile->save(); 
-        
+        $profile->save();
+
 
 
         $user->save(); // lưu vào CSDL
@@ -90,7 +90,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        
+
 
         $profile = $user->profile;
         $profile->full_name =   $request->fullname;
@@ -99,8 +99,8 @@ class UserController extends Controller
         $profile->birthday  =   $request->date;
         $profile->user_id   =   $user->id; // Gắn khoá ngoại
         $profile->save();
-        
-        
+
+
 
         return redirect()->route('user.index')->with('success', 'Cập nhật user thành công!');
 

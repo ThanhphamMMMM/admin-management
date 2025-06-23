@@ -26,18 +26,17 @@ Route::get('/', function () {
 
 
 //INDEX-ROLE
-Route::get('/index-roles',[RoleController::class, 'index'])->name('role.index');
+Route::get('/roles',[RoleController::class, 'index'])->name('role.index');
 //CREATE-ROLE
-Route::get('/create-roles',[RoleController::class, 'create'])->name('role.create');
+Route::get('/create',[RoleController::class, 'create'])->name('role.create');
 //STORE-ROLE
-Route::post('/store-roles',[RoleController::class, 'store'])->name('role.store');
+Route::post('/store',[RoleController::class, 'store'])->name('role.store');
 //INDEX-EDIT ROLE
-Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('role.edit');
+Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
 //UPDATE-ROLE
-Route::post('/roles{id}',[RoleController::class,'update'])->name('role.update');
+Route::post('/update/{id}',[RoleController::class,'update'])->name('role.update');
 // DESTROY-ROLE
-Route::delete('/roles/{id}',[RoleController::class,'destroy'])->name('role.destroy');
-
+Route::delete('/destroy/{id}',[RoleController::class,'destroy'])->name('role.destroy');
 
 
 // HIỂN THỊ USER
