@@ -19,7 +19,7 @@
         @csrf
         <div class="item">
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" value="{{ old('name',$user->email)}}"
+            <input type="email" id="email" name="email" value="{{ old('email',$user->email)}}"
                    placeholder="Nhập email :(...@gmail.com) " required> <br>
             @error('email')
             <div style="color:red;">{{ $message }}</div>

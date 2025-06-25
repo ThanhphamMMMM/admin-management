@@ -57,7 +57,7 @@ class UserController extends Controller
 
 
 
-        $user->save(); // lưu vào CSDL
+        
         return redirect()->route('user.index')->with('thanh', 'Thêm user thành công!');
 
     }
