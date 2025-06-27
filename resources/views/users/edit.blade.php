@@ -10,6 +10,18 @@
 </head>
 <body>
 
+    @if (session('success')) 
+        <div style="color: green ">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error')) 
+        <div style="color: red">
+            {{ session('error') }}
+        </div>
+    @endif
+
 <h1>Edit User</h1>
 
 <h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
@@ -17,10 +29,11 @@
 <div class="container">
     <form action="{{ route('user.update',$user->id)}}" method="POST">
         @csrf
+
         <div class="item">
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" value="{{ old('email',$user->email)}}"
-                   placeholder="Nhập email :(...@gmail.com) " required> <br>
+                   placeholder="Nhập họ và tên " required>
             @error('email')
             <div style="color:red;">{{ $message }}</div>
             @enderror
@@ -85,15 +98,11 @@
             </select>
         </div>
 
-
         <button type="submit">THỰC HIỆN</button>
-
 
     </form>
 
 
 </div>
-
-
 </body>
 </html>

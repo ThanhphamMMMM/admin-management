@@ -50,7 +50,7 @@ h5 {
     padding: 3px;
 }
 
-button {
+ .submit_form button {
    margin-left: 265px ;
    height: 50px;
    width: 150px;
@@ -58,8 +58,9 @@ button {
    border: #5f4ae7 solid 1px;
    background: #5f4ae7;
    color: whitesmoke;
+
 }
-button:hover {
+ .submit_form button:hover {
     cursor:pointer;
     background: #2c0eec;
 }
@@ -77,3 +78,29 @@ h5 a {
     text-decoration: none;
     color: #2c0eec;
 }
+
+.container_password {
+    display: flex;
+    align-content: center;
+    gap: 5px; 
+    width: 100%;
+    border: #5f4ae7 solid 1px;
+    height:41px;
+    border-radius: 7px;
+    margin-left: 10px;
+
+}
+.container_password input {
+    border: none;
+}
+
+
+.container_password button {
+    padding: 0;
+    margin:  5px ;
+    background: none;
+    border: none;
+    
+}
+
+

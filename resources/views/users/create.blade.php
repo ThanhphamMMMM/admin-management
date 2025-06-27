@@ -9,7 +9,7 @@
     <title>Create User</title>
 </head>
 <body>
-    
+ 
     <h1>Create new User</h1>
 
     <h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
@@ -23,7 +23,7 @@
 
             <div class="item">
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="email" placeholder="Nhập email :(...@gmail.com) " required> <br>
+                <input type="email" id="email" name="email" value="{{ old('email')}}"  placeholder="Nhập email :(...@gmail.com) " required> <br>
                                     @error('email')
                         <div style="color:red;">{{ $message }}</div>
                     @enderror
@@ -41,7 +41,7 @@
 
             <div class="item">
                 <label for="fullname">Full Name :</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên " required>
+                <input type="text" id="fullname" name="fullname" value="{{ old('fullname')}}"  placeholder="Nhập họ và tên " required>
                                 @error('fullname')
                     <div style="color:red;">{{ $message }}</div>
                 @enderror
@@ -50,7 +50,7 @@
 
             <div class="item">
                 <label for="tel">Phone :</label>
-                <input type="tel" id="tel" placeholder="Nhập số điện thoại " name="tel" required>
+                <input type="tel" id="tel" value="{{ old('tel')}}"  placeholder="Nhập số điện thoại " name="tel" required>
                                 @error('tel')
                     <div style="color:red;">{{ $message }}</div>
                 @enderror
@@ -58,7 +58,7 @@
 
             <div class="item">
                 <label for="address">Address :</label>
-                <input type="text" id="address" placeholder="Nhập địa chỉ " name="address" required>
+                <input type="text" id="address" value="{{ old('address')}}"  placeholder="Nhập địa chỉ " name="address" required>
                                 @error('address')
                     <div style="color:red;">{{ $message }}</div>
                 @enderror
@@ -67,7 +67,7 @@
 
             <div class="item" >
                 <label for="date">Birthday :</label>
-                <input type="date" id="date" name="date" required  >
+                <input type="date" id="date" name="date" value="{{ old('date')}}"  required  >
                                 @error('date')
                     <div style="color:red;">{{ $message }}</div>
                 @enderror

@@ -22,17 +22,18 @@ class AuthController extends Controller
 
         $email = $request->input('email');
         $password = $request->input('password');
-        $user = User::where('email',$email)->first();
+        $user = User::where('email', $email)->first();
            
-
         if($user) {
             if(Hash::check($password,$user->password)) {
-                return "đăng nhập thành công";
-            }else{
-                return "nhập sai mật khẩu";
+                return view('welcome');
             }
-        }else{
-            return "email hiện không tồn tại";
+            else{
+                return back()->with('error','bạn đã nhập sai mật khẩu');
+            }
+        }
+        else {
+                return redirect()->back()->withInput($request->all)->with('error','email không tồn tại');
         }  
     }
 
@@ -40,7 +41,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-     public function process(Request $request) {
+    public function process(Request $request) {
         $request->validate([
             'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',  // kiểm tra email trong bảng users đã tồn tại chưa
             'password'  =>'required|min:7',
@@ -51,7 +52,6 @@ class AuthController extends Controller
             
         ]);
 
-    
         try {
             $user = new User();
             $user->email = $request->email;
@@ -71,6 +71,5 @@ class AuthController extends Controller
         }catch(\Exception $e) { 
             return back()->with('error','đăng kí thất bạn'. $e->getMessage());
         }
-
     }
 }

@@ -11,6 +11,18 @@
     <title>Danh sách người dùng</title>
 </head>
 <body>
+
+    @if (session('success')) 
+        <div style="color: green ">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error')) 
+        <div style="color: red">
+            {{ session('error') }}
+        </div>
+    @endif
     
     <h1>Danh sách người dùng </h1>
 

@@ -8,58 +8,51 @@ use App\Models\Role;
 
 class RoleController extends Controller
 {
-    //index role
-    public function index() {
-        
-        $roles = Role::all();
 
+    public function index() {
+        $roles = Role::all();
         return view('roles.index',compact('roles'));
 
     }
 
-    //create role
     public function create() {
-
         return view('roles.create');
     }
-    //store role
-    public function store(Request $request) {
 
+    public function store(Request $request) {
         $request->validate([
             'name'=>'required|unique:roles',
             'descride'=>'required',
         ]);
 
+       try {
         $role = new Role();
         $role->name = $request->name;
         $role->descride = $request->descride;
         $role->save();
 
         return redirect()->route('role.index')->with('success','thêm vai trò thành công');
+       }
+       catch(\Exception $e) {
+        return back()->with('error', 'tạo vai trò thất bại' . $e->getMessage());
+       }
     }
 
     public function edit($id) {
-
         $role = Role::findOrFail($id);
-
         return view('roles.edit',compact('role'));
     }
 
     public function update(Request $request , $id) {
-
         $role = Role::findOrfail($id);
-
         $request->validate([
 
-            // 'name' => 'required|unique:roles',  //'unique:table,column,' . $id để bỏ qua chính mình
             'name' => 'required|unique:roles,name,'. $id,
-
             'descride'=>'required',
         ]);
 
         $role->name = $request->name;
         $role->descride = $request->descride;
-
         $role->save();
 
         return redirect()->route('role.index')->with('success','sửa vai trò thành công');

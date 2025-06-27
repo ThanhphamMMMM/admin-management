@@ -7,17 +7,12 @@
     <title>Create ROLE</title>
 </head>
 <body>
-
+    
         <h1>Edit ROLE</h1>
         
-        <h2></h2>
-
-        <h2></h2>
-
             <div class="container">
 
             <form action="{{ route('role.update', $role->id) }}" method="POST">
-
                 @csrf
 
                     <div class="item">
