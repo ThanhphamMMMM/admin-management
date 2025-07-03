@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/indexhd.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -13,20 +13,20 @@
 <body>
 
     @if (session('success')) 
-        <div style="color: green ">
-            {{ session('success') }}
-        </div>
+        <div class="success">
+        {{ session('success') }}
+    </div>
     @endif
 
     @if (session('error')) 
-        <div style="color: red">
-            {{ session('error') }}
-        </div>
+        <div class="error">
+        {{ session('error') }}
+    </div>
     @endif
     
     <h1>Danh sách người dùng </h1>
 
-    <h2><a href="{{ route('role.index')}}">List Role</a></h2>
+    <h2><a href="/dashboard">Trang chủ </a></h2>
 
     <h2><a href="{{ route('user.create')}}">Tạo mới User</a></h2>
 

@@ -72,7 +72,7 @@ class UserController extends Controller
         $request->validate([
 
             'email'     =>'required|email|email',$id,   // kiểm tra email trong bảng users đã tồn tại chưa
-            'password'  =>'required|min:7',
+            'password'  =>'nullable|min:7',
             'fullname'  =>'required',
             'tel'       =>'required|max:10',
             'address'   =>'required',

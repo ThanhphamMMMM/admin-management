@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/createform.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 
     <title>Edit User</title>
 </head>
@@ -42,7 +42,7 @@
 
         <div class="item">
             <label for="password">Password :</label>
-            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" required>
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" >
             @error('password')
             <div style="color:red;">{{ $message }}</div>
             @enderror

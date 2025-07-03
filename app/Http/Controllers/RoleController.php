@@ -51,11 +51,18 @@ class RoleController extends Controller
             'descride'=>'required',
         ]);
 
+       try {
         $role->name = $request->name;
         $role->descride = $request->descride;
         $role->save();
 
         return redirect()->route('role.index')->with('success','sửa vai trò thành công');
+        }
+        catch(\Exception $e) {
+        return back()->with('error', 'sửa vai trò thất bại' . $e->getMessage());
+       }
+
+        
     }
 
     public function destroy($id) {

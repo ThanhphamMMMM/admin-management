@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/indexhd.css') }}">
     <title>Quản lí ROLE</title>
 </head>
 <body>
 
-    @if (session('error','update vai trò thành công'))
-        <div style="color: red">{{ session('error')}}</div>
+    @if (session('success')) 
+        <div class="success">
+        {{ session('success') }}
+    </div>
     @endif
-    @if (session('success','update vai trò thành công'))
-        <div style="color: green">{{ session('success')}}</div>
+
+    @if (session('error')) 
+        <div class="error">
+        {{ session('error') }}
+    </div>
     @endif
 
     <h1 id="h1">List of Roles</h1>
 
-    <h2><a href="{{ route('user.index')}}">List User </a></h2>
+    <h2><a href="/dashboard">Trang chủ </a></h2>
     <h2><a href="{{ route('role.create')}}">Tạo Mới Vai Trò </a></h2>
 
     <table>
