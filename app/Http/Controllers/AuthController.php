@@ -45,12 +45,25 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+<<<<<<< Updated upstream
     public function process(LoginRequest $request) {
+=======
+    public function process(Request $request) {
+        $request-> validate([
+            'email' =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',
+            'password'  =>'required|min:7|confirmed',
+            'fullname'  =>'required', 
+            'tel'       =>'required|max:10',
+            'address'   =>'required',
+            'birthday'=>'required',
+            
+        ]);
+>>>>>>> Stashed changes
         try {
             $user = new User();
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role_id = 7;
+            $user->role_id = 5;
             $user->save();
 
             $profile = new Profile();
