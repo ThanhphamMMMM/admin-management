@@ -1,38 +1,23 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/indexhd.css') }}">
-    <title>Quản lí ROLE</title>
-</head>
-<body>
+@extends('layouts.layoutapp')
 
-    @if (session('success')) 
-        <div class="success">
-        {{ session('success') }}
-    </div>
-    @endif
+@section('css')
 
-    @if (session('error')) 
-        <div class="error">
-        {{ session('error') }}
-    </div>
-    @endif
+@section('title','Quản lý vai trò')
 
-    <h1 id="h1">List of Roles</h1>
+@section('h1', 'Quản lý')
+@section('h2', 'Danh sách vai trò')
+@section('h3')
+    <a href="{{ route('role.create')}}">Tạo Mới Vai Trò </a>
+@endsection
 
-    <h2><a href="/dashboard">Trang chủ </a></h2>
-    <h2><a href="{{ route('role.create')}}">Tạo Mới Vai Trò </a></h2>
+@section('content')
 
-    <table>
-
+     <table>
         <thead>
             <tr>
                 <th>STT</th>
-                <th>Name Role(Vai trò)</th>
-                <th>Descride(Mô tả chung về vai trò)</th>
+                <th>Name Role</th>
+                <th>Descride</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -42,6 +27,7 @@
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->descride }}</td>
                     <td>
+                        {{-- nút xoá roles --}}
                         <form action="{{ route('role.destroy',$role->id)}}" method="POST">
 
                             @csrf
@@ -49,7 +35,7 @@
 
                             <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá</button>
                         </form>
-
+                        {{-- nút xoá roles --}}
                         <a href="{{ route('role.edit', $role->id) }}">
                             <button>Sửa</button>
                         </a>
@@ -60,6 +46,5 @@
             @endforeach
         </tbody>
     </table>
+@endsection
 
-</body>
-</html>

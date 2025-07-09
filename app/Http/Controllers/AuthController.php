@@ -45,20 +45,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-<<<<<<< Updated upstream
+
     public function process(LoginRequest $request) {
-=======
-    public function process(Request $request) {
-        $request-> validate([
-            'email' =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',
-            'password'  =>'required|min:7|confirmed',
-            'fullname'  =>'required', 
-            'tel'       =>'required|max:10',
-            'address'   =>'required',
-            'birthday'=>'required',
-            
-        ]);
->>>>>>> Stashed changes
+
         try {
             $user = new User();
             $user->email = $request->email;
@@ -74,9 +63,13 @@ class AuthController extends Controller
             $profile->user_id = $user->id;
             $profile->save();
 
-            return redirect()->route('auth.login')->with('success', 'đã đăng kí thành công hãy đăng nhập vào hệ thống');
+            return redirect()->route('auth.login')->with('success', ' đăng kí thành công ');
         } catch(\Exception $e) { 
             return back()->with('error','đăng kí thất bạn'. $e->getMessage());
         }
+    }
+
+    public function index() {
+        return view('layouts/layoutapp');
     }
 }

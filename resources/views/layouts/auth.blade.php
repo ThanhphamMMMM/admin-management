@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('theme/vendor/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}">
     <link rel="stylesheet" href="{{ asset('theme/vendor/simplebar/dist/simplebar.min.js')}}">
     <link rel="stylesheet" href="{{ asset('theme/vendor/simplebar/dist/simplebar.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/notification.css')}}">
     <link rel="stylesheet" href="{{ asset('theme/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}">
     @yield('css')
     <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
@@ -134,12 +135,12 @@
                 <p class="font-size-ms text-muted mb-4">@yield('p')</p>
 
                 @if (session('error')) 
-                    <div style="color:red;" class="error">
+                    <div class="error">
                         {{ session('error') }}
                     </div>
                 @endif
                 @if (session('success')) 
-                    <div style="color:green;" class="success">
+                    <div class="success">
                         {{ session('success') }}
                     </div>
                 @endif

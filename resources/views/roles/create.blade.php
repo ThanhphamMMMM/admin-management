@@ -34,6 +34,14 @@
 
             </form>
         </div>
+{{-- 
+        <script>
+
+const d = new Date();
+
+                  console.log(d);
+
+        </script> --}}
 
 </body>
 </html>
