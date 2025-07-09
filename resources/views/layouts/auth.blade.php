@@ -94,7 +94,7 @@
           transform: rotate(360deg);
         }
       }
-      
+
     </style>
     <!-- Page loading scripts-->
     <script>
@@ -107,7 +107,7 @@
           }, 2000);
         };
       })();
-      
+
     </script>
     <!-- Vendor Styles-->
     <link rel="stylesheet" media="screen" href="theme/vendor/simplebar/dist/simplebar.min.css"/>
@@ -134,12 +134,12 @@
                 <h1 class="h2">@yield('heading')</h1>
                 <p class="font-size-ms text-muted mb-4">@yield('p')</p>
 
-                @if (session('error')) 
+                @if (session('error'))
                     <div class="error">
                         {{ session('error') }}
                     </div>
                 @endif
-                @if (session('success')) 
+                @if (session('success'))
                     <div class="success">
                         {{ session('success') }}
                     </div>
