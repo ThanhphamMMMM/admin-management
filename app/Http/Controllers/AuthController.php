@@ -18,35 +18,37 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showlogin() {
+    public function showlogin()
+    {
         return view('auth.login');
     }
 
-    public function checklogin(Request $request) {
+    public function checklogin(Request $request)
+    {
 
         $email = $request->input('email');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();
-           
-        if($user) {
-            if(Hash::check($password,$user->password)) {
+
+        if ($user) {
+            if (Hash::check($password, $user->password)) {
                 return view('welcome');
+            } else {
+                return redirect()->back()->withInput($request->all)->with('error', 'sai mật khẩu');
             }
-            else{
-                return redirect()->back()->withInput($request->all)->with('error','sai nhập khẩu');
-            }
+        } else {
+            return redirect()->back()->withInput($request->all)->with('error', 'email không tồn tại');
         }
-        else {
-                return redirect()->back()->withInput($request->all)->with('error','email không tồn tại');
-        }  
     }
 
-    public function showregister() {
+    public function showregister()
+    {
         return view('auth.register');
     }
 
 
-    public function process(LoginRequest $request) {
+    public function process(LoginRequest $request)
+    {
 
         try {
             $user = new User();
@@ -64,12 +66,13 @@ class AuthController extends Controller
             $profile->save();
 
             return redirect()->route('auth.login')->with('success', ' đăng kí thành công ');
-        } catch(\Exception $e) { 
-            return back()->with('error','đăng kí thất bạn'. $e->getMessage());
+        } catch (\Exception $e) {
+            return back()->with('error', 'đăng kí thất bạn' . $e->getMessage());
         }
     }
 
-    public function index() {
+    public function index()
+    {
         return view('layouts/layoutapp');
     }
 }
