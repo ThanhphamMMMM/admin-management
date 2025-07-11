@@ -3,87 +3,77 @@
 @section('title','quản lí user')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
 @endsection
 
 
 @section('content')
-<h1>Sửa người dùng</h1>
-     <div class="container">
-    <form action="{{ route('user.update',$user->id)}}" method="POST">
-        @csrf
+    <h3 class="text-left">Sửa người dùng</h3>
+    <div class="p-4">
+        <form action="{{ route('user.update',$user->id)}}" method="POST">
+            @csrf
 
-        <div class="item">
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" value="{{ old('email',$user->email)}}"
-                   placeholder="Nhập họ và tên " required>
-            @error('email')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
+            <!-- Text input -->
+            <div class="form-group">
+                <label for="text-input">Text</label>
+                <input class="form-control" type="text" id="text-input" value="Artisanal kale">
+            </div>
 
-        <div class="item">
-            <label for="password">Password :</label>
-            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" >
-            @error('password')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
+            <!-- Search input -->
+            <div class="form-group">
+                <label for="search-input">Search</label>
+                <input class="form-control" type="search" id="search-input" value="How do I shoot web">
+            </div>
 
+            <!-- Email input -->
+            <div class="form-group">
+                <label for="email-input">Email</label>
+                <input class="form-control" type="email" id="email-input" value="email@example.com">
+            </div>
 
-        <div class="item">
-            <label for="fullname">Full name :</label>
-            <input type="text" id="fullname" name="fullname" value="{{ old('fullname',$user->profile->full_name)}}"
-                   placeholder="Nhập họ và tên " required>
-            @error('fullname')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
+            <!-- URL Input -->
+            <div class="form-group">
+                <label for="url-input">URL</label>
+                <input class="form-control" type="url" id="url-input" value="https://getbootstrap.com">
+            </div>
 
+            <!-- Phone Input -->
+            <div class="form-group">
+                <label for="tel-input">Phone</label>
+                <input class="form-control" type="tel" id="tel-input" value="1-(770)-334-2518">
+            </div>
 
-        <div class="item">
-            <label for="tel">Phone :</label>
-            <input type="tel" id="tel" name="tel" value="{{ old('tel',$user->profile->phone)}}"
-                   placeholder="Nhập số điện thoại " required>
-            @error('tel')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="form-group">
+                <label for="pass-visibility" class="form-label">Password</label>
+                <div class="cs-password-toggle">
+                    <input type="password" id="pass-visibility" class="form-control" value="hidden@password">
+                    <label class="cs-password-toggle-btn">
+                        <input type="checkbox" class="custom-control-input">
+                        <i class="fe-eye cs-password-toggle-indicator"></i>
+                        <span class="sr-only">Show password</span>
+                    </label>
+                </div>
+            </div>
 
-        <div class="item">
-            <label for="address">Address :</label>
-            <input type="text" id="address" name="address" value="{{ old('address', $user->profile->address) }}"
-                   placeholder="Nhập địa chỉ " required>
-            @error('address')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
+            <!-- Textarea -->
+            <div class="form-group">
+                <label for="textarea-input">Textarea</label>
+                <textarea class="form-control" id="textarea-input" rows="5">Hello World!</textarea>
+            </div>
 
+            <!-- Select -->
+            <div class="form-group">
+                <label for="select-input">Select</label>
+                <select class="form-control custom-select" id="select-input">
+                    <option>Choose option...</option>
+                    <option>Option item 1</option>
+                    <option>Option item 2</option>
+                    <option>Option item 3</option>
+                </select>
+            </div>
 
-        <div class="item">
-            <label for="date">Birthday :</label>
-            <input type="date" id="date" name="date" value="{{ old('date', $user->profile->birthday)}}" required>
-            @error('date')
-            <div style="color:red;">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="item">
-            <label for="role">Role</label>
-            <select name="role" id="role">`
-                @foreach ($roles as $role)
-                    <option value="{{ $role->id}}"
-                        {{ $role->id == old('role', $user->role_id) ? 'selected' : '' }}>
-                        {{ $role->id }} - {{  $role->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <button type="submit">THỰC HIỆN</button>
-    </form>
-</div>
+            <button type="submit" class="btn btn-info btn-sm m-0" disabled>Lưu lại</button>
+        </form>
+    </div>
 @endsection
-
-
 
