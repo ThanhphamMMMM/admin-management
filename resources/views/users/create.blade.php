@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+@extends('layouts.app')
 
-    <title>Create User</title>
-</head>
-<body>
- 
-    <h1>Create new User</h1>
+@section('title','quản lí user')
 
-    <h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+@endsection
 
 
-    <div class="container">
+@section('content')
+<h1>Thêm mới người dùng</h1>
+     <div class="container">
 
         <form action="{{ route('user.store')}}" method="POST">
 
@@ -86,19 +80,10 @@
                     </select>
 
             </div>
-
-
             <button type="submit">THỰC HIỆN</button>
-
-            
-
-            
-        
         </form>
-
     </div>
-    
+@endsection
 
 
-</body>
-</html>
+

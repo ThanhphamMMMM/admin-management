@@ -1,17 +1,12 @@
-@extends('layouts.layoutapp')
+@extends('layouts.app')
+
+@section('title','quản lí role')
 
 @section('css')
 
-@section('title','Quản lý vai trò')
-
-@section('h1', 'Quản lý')
-@section('h2', 'Danh sách vai trò')
-@section('h3')
-    <a href="{{ route('role.create')}}">Tạo Mới Vai Trò </a>
 @endsection
 
 @section('content')
-
      <table>
         <thead>
             <tr>
@@ -27,18 +22,22 @@
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->descride }}</td>
                     <td>
-                        {{-- nút xoá roles --}}
-                        <form action="{{ route('role.destroy',$role->id)}}" method="POST">
-
+                        
+                        <div class="nav">
+                            <div class="nav-x">
+                            <form action="{{ route('role.destroy',$role->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-
-                            <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá</button>
+                            <button type="submit" class="btn btn-danger m-2" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá</button>
                         </form>
-                        {{-- nút xoá roles --}}
-                        <a href="{{ route('role.edit', $role->id) }}">
-                            <button>Sửa</button>
+                        </div>
+                        
+                        <div class="nav-s">
+                            <a href="{{ route('role.edit', $role->id) }}">
+                             <button type="button" class="btn btn-primary m-2 ">Sửa</button>
                         </a>
+                        </div>
+                        </div>
 
                     </td>
                 </tr>

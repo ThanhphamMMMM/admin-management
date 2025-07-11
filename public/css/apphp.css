@@ -1,0 +1,49 @@
+.nav {
+    display:flex;
+}
+.col-xl-9 {
+    margin-top: 150px;
+ 
+}
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+     text-align: left;
+}
+
+th {
+    background-color: #f2f2f2; 
+}
+.mt-123px {
+    margin-top: 123px;
+}
+.custem-navbar {
+    margin-left: 400px;
+    
+}
+.gap-100px {
+    gap: 100px;
+}
+.dropdown {
+    margin-top: 75px;
+}
+.dropdown-list {
+    padding: 10px;
+    margin: 15px;
+    background:white;
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+.dropdown-list a {
+    text-decoration: none;
+    color: black;
+}
+.dropdown-list:hover .dropdown-item {
+  display: block;
+}

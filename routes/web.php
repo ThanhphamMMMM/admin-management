@@ -46,7 +46,8 @@ Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.de
 //AUTH
 Route::get('/login',[AuthController::class, 'showlogin'])->name('auth.login');
 Route::post('/checklogin',[AuthController::class, 'checklogin'])->name('auth.checklogin');
-Route::get('/layoutapp',[AuthController::class, 'index']);
+Route::get('/app',[AuthController::class, 'index']);
 
 Route::get('/register',[AuthController::class, 'showregister'])->name('auth.register');
 Route::post('/process',[AuthController::class,'process'])->name('auth.process');
+

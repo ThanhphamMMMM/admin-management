@@ -1,13 +1,9 @@
-@extends('layouts.layoutapp')
+@extends('layouts.app')
+
+@section('title','quản lí user')
 
 @section('css')
 
-@section('title','Quản lý người dùng')
-
-@section('h1', 'Quản lý')
-@section('h2', 'Danh sách người dùng')
-@section('h3')
-    <a href="{{ route('user.create') }}">Tạo mới User</a>
 @endsection
 
 
@@ -15,16 +11,16 @@
      <table>
         <thead>
             <tr>
-                <th>stt</th>
+                <th>Stt</th>
                 <th>Email</th>
-                <th>fullname</th>
-                <th>phone</th>
-                <th>addrees</th>
-                <th>birthday</th>
-                <th>profile</th>
-                <th>role</th>
-                <th>create time</th>
-                <th>thao tác</th> 
+                <th>Fullname</th>
+                <th>Phone</th>
+                <th>Addrees</th>
+                <th>Birthday</th>
+                <th>Profiles</th>
+                <th>Roles</th>
+                <th>Create time</th>
+                <th>Pperationc</th> 
             </tr>
         </thead>
         <tbody>
@@ -41,20 +37,22 @@
                     <td>{{ $user->created_at->format('d/m/Y') }}</td>
                     
                     <td>
-                        {{-- nút xoá user --}}
-                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                        <div class="nav">
+                            <div class="nav-x">
+                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('xác nhận xoá người user này không')">
-                                XoÁ                            
-                            </button>
+                             <button type="button" class="btn btn-danger m-2" onclick="return confirm('xác nhận xoá người user này không')">Xoá</button>
                         </form>
-                        {{-- nút sửa user --}}
-                        <a href="{{ route('user.edit',$user->id)}}">                       
-                            <button>
-                                Sửa
-                            </button>
+                        </div>
+
+                        <div class="nav-s">
+                            <a href="{{ route('user.edit',$user->id)}}">                       
+                                <button type="button" class="btn btn-primary m-2 ">Sửa</button>
                         </a>
+                        </div>
+                        </div>
+                        
                         
                     </td>
 
@@ -63,4 +61,6 @@
         </tbody>
     </table>
 @endsection
+
+
 

@@ -70,6 +70,6 @@ class AuthController extends Controller
     }
 
     public function index() {
-        return view('layouts/layoutapp');
+        return view('layouts/app');
     }
 }

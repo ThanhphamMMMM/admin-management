@@ -1,32 +1,15 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+@extends('layouts.app')
 
-    <title>Edit User</title>
-</head>
-<body>
+@section('title','quản lí user')
 
-    @if (session('success')) 
-        <div style="color: green ">
-            {{ session('success') }}
-        </div>
-    @endif
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+@endsection
 
-    @if (session('error')) 
-        <div style="color: red">
-            {{ session('error') }}
-        </div>
-    @endif
 
-<h1>Edit User</h1>
-
-<h2><a href="{{ route('user.index')}}">Hiển thị danh sách user</a></h2>
-
-<div class="container">
+@section('content')
+<h1>Sửa người dùng</h1>
+     <div class="container">
     <form action="{{ route('user.update',$user->id)}}" method="POST">
         @csrf
 
@@ -38,7 +21,6 @@
             <div style="color:red;">{{ $message }}</div>
             @enderror
         </div>
-
 
         <div class="item">
             <label for="password">Password :</label>
@@ -99,10 +81,9 @@
         </div>
 
         <button type="submit">THỰC HIỆN</button>
-
     </form>
-
-
 </div>
-</body>
-</html>
+@endsection
+
+
+

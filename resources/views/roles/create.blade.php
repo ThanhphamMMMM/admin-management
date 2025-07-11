@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
-    <title>Create role</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>Create ROLE</h1>
+@section('title','quản lí user')
 
-    <h2><a href=" {{ route('role.index') }}"> Danh sách Role</a></h2>
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+@endsection
 
-    <h2><a href="{{ route('user.index')}}">List User </a></h2>
-        <div class="container">
 
+@section('content')
+ <h1>Thêm vai trò</h1>
+     <div class="container">
             <form action="{{ route('role.store') }}" method="POST">
-
                 @csrf
-
                     <div class="item">
                         <label for="name">Name Role :</label>
-                        <input type="text" id="name" name="name" placeholder="Nhập vai trò muốn tạo " required>
+                        <input type="text" id="name" name="name" placeholder="Nhập vai trò mới " required>
                     </div>
 
                     <div class="item">
@@ -33,15 +25,5 @@
                     <button type="submit"> Thực hiện</button>
 
             </form>
-        </div>
-{{-- 
-        <script>
-
-const d = new Date();
-
-                  console.log(d);
-
-        </script> --}}
-
-</body>
-</html>
+    </div>
+@endsection
