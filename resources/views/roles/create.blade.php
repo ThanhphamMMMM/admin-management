@@ -4,26 +4,32 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
-@endsection
 
+@endsection
 
 @section('content')
- <h1>Thêm vai trò</h1>
-     <div class="container">
-            <form action="{{ route('role.store') }}" method="POST">
-                @csrf
-                    <div class="item">
-                        <label for="name">Name Role :</label>
-                        <input type="text" id="name" name="name" placeholder="Nhập vai trò mới " required>
+    <h3>Thêm mới vai trò</h3>
+     <div class="card-body">
+        <form action="{{ route('role.store') }}" method="POST">
+            @csrf
+            <div class="tab-content">
+                <div class="form-group row align-items-center">
+                    <label class="col-md-2 col-form-label font-weight-medium" for="name">Name</label>
+                    <div class="col-md-10">
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Nhập vai trò cần cần tạo " required>
                     </div>
+                </div>
 
-                    <div class="item">
-                        <label for="disride">Discridetion :</label>
-                        <input type="text" id="descride" name="descride" placeholder="Mô tả tổng quan về vai trò mới ">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label font-weight-medium" for="descride">Description</label>
+                    <div class="col-md-10">
+                    <textarea class="form-control" id="descride" name="descride" rows="5"  placeholder="Mô tả chung về vai trò cần cần tạo "></textarea>
                     </div>
+                </div>
 
-                    <button type="submit"> Thực hiện</button>
-
-            </form>
-    </div>
+                <button type="submit"  class="btn btn-outline-primary"> Thực hiện</button>
+            </div>
+        </form>
+     </div>
 @endsection
+

@@ -3,87 +3,108 @@
 @section('title','quản lí user')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
-@endsection
+<link rel="stylesheet" href="{{ asset('css/creategh.css')}}">
 
+@endsection
 
 @section('content')
-<h1>Thêm mới người dùng</h1>
-     <div class="container">
+<h3>Thêm mới người dùng </h3>
+  <div class="card-body">
+    <form action="{{ route('user.store')}}" method="POST">
+      @csrf
+      <div class="tab-content">
 
-        <form action="{{ route('user.store')}}" method="POST">
-
-         @csrf
-
-            <div class="item">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" value="{{ old('email')}}"  placeholder="Nhập email :(...@gmail.com) " required> <br>
-                                    @error('email')
-                        <div style="color:red;">{{ $message }}</div>
-                    @enderror
-            </div>
-
-
-            <div class="item">
-                <label for="password">Password :</label>
-                <input type="password" id="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" name="password" required>
-                                @error('password')
-                    <div style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-
-            <div class="item">
-                <label for="fullname">Full Name :</label>
-                <input type="text" id="fullname" name="fullname" value="{{ old('fullname')}}"  placeholder="Nhập họ và tên " required>
-                                @error('fullname')
-                    <div style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-
-            <div class="item">
-                <label for="tel">Phone :</label>
-                <input type="tel" id="tel" value="{{ old('tel')}}"  placeholder="Nhập số điện thoại " name="tel" required>
-                                @error('tel')
-                    <div style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="item">
-                <label for="address">Address :</label>
-                <input type="text" id="address" value="{{ old('address')}}"  placeholder="Nhập địa chỉ " name="address" required>
-                                @error('address')
-                    <div style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-
-            <div class="item" >
-                <label for="date">Birthday :</label>
-                <input type="date" id="date" name="date" value="{{ old('date')}}"  required  >
-                                @error('date')
-                    <div style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="item">
-                <label for="role">Role</label>
-                    <select name="role" id="role">
-                        <option value="role_id"></option>
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id}}">{{ $role->id }} - {{  $role->name }} </option>
-                            @endforeach
-                                @error('date')
-                    <div style="color:red;">{{ $message }}</div>
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="fullname">Full Name</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" id="fullname" value="{{ old('fullname')}}" placeholder="Nhập họ và tên " name="fullname" required>
+          @error('fullname')
+                <div style="color:red;">{{ $message }}</div>
             @enderror
-                    </select>
+        </div>
+      </div>
 
-            </div>
-            <button type="submit">THỰC HIỆN</button>
-        </form>
-    </div>
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="tel">Phone</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" id="tel" value="{{ old('tel')}}" placeholder="Nhập số điện thoại " name="tel" required>
+          @error('tel')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="address">Address</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" id="address" value="{{ old('address')}}" placeholder="Nhập địa chỉ " name="address" required>
+          @error('address')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="date">Brithday</label>
+        <div class="col-md-10">
+          <input class="form-control" type="date" id="date" value="{{ old('date')}}" placeholder="Nhập địa chỉ " name="date" required>
+          @error('date')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="email">Email</label>
+        <div class="col-md-10">
+          <input class="form-control" type="email" id="email" name="email" value="{{ old('email')}}" placeholder="Nhập email :(...@gmail.com) " required >
+            @error('email')
+            <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+      </div>
+      
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="password">Password</label>
+        <div class="col-md-10">
+          <label class="cs-password-toggle-btn">
+        <input class="custom-control-input" type="checkbox">
+      </label>
+          <input class="form-control" type="password" id="password" name="password">
+        </div>
+          @error('password')
+          <div style="color:red;">{{ $message }}</div>
+          @enderror
+      </div> 
+
+      <div class="form-group row align-items-center">
+        <label class="col-md-2 col-form-label font-weight-medium" for="role">Roles</label>
+        <div class="col-md-10">
+            <select class="form-control custom-select" name="role" id="role">
+                <option value="">-- Chọn vai trò --</option>
+                @foreach ($roles as $role)
+                    <option value="{{ $role->id }}" {{ old('role') == $role->id ? 'selected' : '' }}>
+                        {{ $role->id }} - {{ $role->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('role')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+      </div>
+          
+      <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
+
+  </form>         
+      </div>
+
 @endsection
+
+
+     
+
+    
 
 
 

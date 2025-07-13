@@ -3,20 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
-    <!-- SEO Meta Tags-->
-    <meta name="description" content="Around - Multipurpose Bootstrap Template">
-    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
-    <meta name="author" content="Createx Studio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-    <link rel="manifest" href="../site.webmanifest">
-    <link rel="mask-icon" color="#5bbad5" href="../safari-pinned-tab.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <meta name="msapplication-TileColor" content="#766df4">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ asset('theme/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}">
     <link rel="stylesheet" href="{{ asset('theme/vendor/simplebar/dist/simplebar.min.js')}}">
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/themes/prism.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.css')}}"/>
@@ -35,15 +25,12 @@
           <!-- Navbar-->
           <header class="navbar navbar-expand navbar-light fixed-top navbar-box-shadow bg-light px-3 px-lg-4" data-scroll-header="">
 
-            
-            
             <button class="navbar-toggler d-block d-lg-none mr-3 ml-auto" type="button" data-toggle="offcanvas" data-offcanvas-id="componentsNav">
-              <span class="navbar-toggler-icon"></span>
             </button>
             @yield('navbar')
             <ul class="navbar-nav ml-auto d-none d-lg-flex">
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">Live preview</a>
+                <a class="nav-link" href="../index.html">AVATA</a>
               </li>
             </ul>
           </header>
@@ -53,77 +40,71 @@
       <a class="navbar-brand py-1" href="#">
         <img width="50" height="50" src="{{ asset('images/anhlogo.png')}}" alt="LoGo"></a>
     </div>
-    <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light">
+    {{-- <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light">
       <a class="btn btn-outline-light btn-block btn-sm mr-2" href="../index.html">
         <i class="fe-eye mr-2"></i>Preview</a>
       <a class="btn btn-outline-light btn-block btn-sm mt-0" href="../docs/dev-setup.html">
         <i class="fe-file-text mr-2"></i>Docs</a>
-    </div>
+    </div> --}}
     <div class="cs-offcanvas-body pt-4 pb-grid-gutter" data-simplebar="init" data-simplebar-inverse="">
       <div class="simplebar-wrapper" style="margin: -24px -16px -30px;">
         <div class="simplebar-height-auto-observer-wrapper">
           <div class="simplebar-height-auto-observer"></div>
         </div>
+      </div>
         <div class="simplebar-mask">
-          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-           
-<div class="sidebar ml-3">
-  <div class="dropdown">
-    <a class="btn btn-secondary" href="#" >
-      Trang chủ
-    </a>
-  </div>
-
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;"></div>
+        </div>
+        
+<!-- Dropdown -->
     <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Quản lý vai trò
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ route('role.index')}}">Danh sách vai trò</a></li>
-      <li><a class="dropdown-item" href="{{ route('role.create')}}">Thêm vai trò mới</a></li>
-    </ul>
-  </div>
+      <button class="btn btn-primary m-5">
+        <a href="#"class="text-decoration-none text-white">Trang chủ</a>
+      </button>
 
-  <div class="dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Quản lý người dùng
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{{ route('user.index')}}">Danh sách người dùng</a></li>
-      <li><a class="dropdown-item" href="{{ route('user.create')}}">Thêm mới người dùng</a></li>
-    </ul>
-  </div>
-</div>
+      <button type="button" class="btn btn-primary dropdown-toggle m-5" data-bs-toggle="dropdown">
+        Quản lý vai trò
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{{ route('role.index')}}">Hiển thị danh sách vai trò</a></li>
+        <li><a class="dropdown-item" href="{{ route('role.create')}}">Thêm mới vai trò</a></li>
+      </ul>
 
-        <div class="simplebar-placeholder" style="width: auto; height: 138px;">
-          </div>
-        </div>
-        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-          <div class="simplebar-scrollbar" style="width: 0px; display: none;">
-          </div>
-        </div>
-        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-          <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 25px, 0px); display: none;">
-            </div>
+      <button type="button" class="btn btn-primary dropdown-toggle m-5 " data-bs-toggle="dropdown">
+        Quản lý người dùng
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{{ route('user.index')}}">Hiển thị danh sách & hồ sơ người dùng</a></li>
+        <li><a class="dropdown-item" href="{{ route('user.create')}}">Thêm mới người dùng</a></li>
+      </ul>
+    </div>
+
+    <div class="simplebar-placeholder" style="width: auto; height: 138px;"></div>
+    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+      <div class="simplebar-scrollbar" style="width: 0px; display: none;">
       </div>
-      </div>
+    </div>
+    <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+      <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 25px, 0px); display: none;">
+        </div>
+    </div>
       
   </aside>
-          <!-- Basic example-->
-          <section class="pb-5 mb-md-2" id="tables-basic">
-            <div class="card border-0 box-shadow-lg cardh">
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="tab-pane fade active show" id="result1" role="tabpanel">
-                    <div class="table-responsive">
-                      @yield('content')
-                    </div>
-                  </div>
-                </div>
+    <!-- Basic example-->
+    <section class="pb-5 mb-md-2" id="tables-basic">
+      <div class="card border-0 box-shadow-lg cardh">
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="result1" role="tabpanel">
+              <div class="table-responsive">
+                @yield('content')
               </div>
             </div>
-          </section>
-      </section>
+          </div>
+        </div>
+      </div>
+    </section>
+</section>
     </main>
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{ asset('theme/vendor/jquery/dist/jquery.slim.min.js')}}"></script>
@@ -142,6 +123,7 @@
     <script src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
     <!-- Main theme script-->
     <script src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
+    <script src="{{ asset('theme/js/theme.min.js')}}"></script>
     @yield('js')
   </body>
 </html>

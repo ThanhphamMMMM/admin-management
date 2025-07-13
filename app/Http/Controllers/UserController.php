@@ -29,10 +29,10 @@ class UserController extends Controller
     public function store(Request $request) {
         $request -> validate([
 
-            'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',  
+            'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email',  
             'password'  =>'required|min:7',
             'fullname'  =>'required',
-            'tel'       =>'required|max:10',
+            'tel'       =>'required|digits:10',
             'address'   =>'required',
             'date'      =>'required',
             'role'      =>'required|exists:roles,id',    
