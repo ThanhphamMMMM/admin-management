@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-<h3>Thêm mới người dùng </h3>
+<h3>Thêm mới tài khoản người dùng </h3>
   <div class="card-body">
     <form action="{{ route('user.store')}}" method="POST">
       @csrf
