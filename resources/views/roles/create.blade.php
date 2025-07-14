@@ -3,7 +3,7 @@
 @section('title','quản lí user')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+<link rel="stylesheet" href="{{ asset('css/createth.css')}}">
 
 @endsection
 

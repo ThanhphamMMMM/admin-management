@@ -43,7 +43,7 @@
       @error('email')
           <div style="color:red;">{{ $message }}</div>
       @enderror
-    </div>
+    </div>  
     <div class="cs-password-toggle form-group">
       <input class="form-control" type="password" placeholder="Password" name="password" required>
       @error('password')
