@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-content: center;
     box-sizing: border-box;
-    background: rgb(224, 221, 221);
+    background: rgb(243, 240, 240);
 }
 
 .error {
@@ -50,21 +50,19 @@ h5 {
 }
 .container {
     height: 600px;
-    width: 555px;
-    margin-top: 150px;
+    /*width: 555px;*/
+    margin-top: 100px;
     border-radius: 10px;
     /* border: #5f4ae7 solid 1px; */
-    background: white;
+    background: white   ;
     padding: 20px;
+    flex: 1 0 auto;
 }
 
 .item {
     /* margin: 30px; */
     display: flex;
     margin-top: 50px;
-}
-#email {
-    margin-left: 10px;
 }
 .item input {
     flex: 1;
@@ -73,8 +71,6 @@ h5 {
     border: #9385ed solid 1px;
     padding: 3px;
 }
-
-
  .submit_form button {
    margin-left: 265px ;
    height: 50px;
@@ -83,7 +79,6 @@ h5 {
    border: #5f4ae7 solid 1px;
    background: #5f4ae7;
    color: whitesmoke;
-
 }
 #password {
    text-decoration: none;
@@ -98,7 +93,7 @@ h4 a {
     color: #452ddf;
     padding: 10px;
     background: rgb(21, 226, 21);
-    color: whitesmoke;
+    /*color: whitesmoke;*/
     border-radius: 7px;
     margin-left:10px ;
 }
@@ -106,6 +101,16 @@ h5 a {
     text-decoration: none;
     color: #2c0eec;
 }
+.container-custom {
+    flex: 1 0 auto;
+}
+.image-custom {
+    top: 0;
+    right: 0;
+    background: url("../images/anhnen.jpg");
+}
+
+
 
 
 

@@ -20,7 +20,7 @@ td {
 th {
     background-color: #f2f2f2;
 }
-.mt-123px {
+.col_custom {
     margin-top: 123px;
 }
 .custem-navbar {
@@ -37,7 +37,7 @@ th {
     margin: 15px;
     background: white;
     border-radius: 20px;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 .dropdown-list a {
     text-decoration: none;
@@ -72,7 +72,25 @@ th {
     margin-top: 5px;
     border-radius: 5px;
 }
-
-.dropdown-avata li a:hover {
-    background-color: #f0f0f0;
+.img-custom {
+    width : 50px;
+    height : 50px;
 }
+.offset-custom{
+    right: 0;
+    bottom: 0;
+}
+
+
+.wrapper-custem {
+    margin: -24px -16px -30px;
+}
+
+
+
+.dropdown-toggle::after {
+    display: none !important;
+    content: none !important;
+}
+
+

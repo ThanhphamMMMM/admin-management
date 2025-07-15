@@ -3,7 +3,7 @@
 @section('title','quản lí user')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createth.css')}}">
+<link rel="stylesheet" href="{{ asset('css/create.css')}}">
 
 @endsection
 
@@ -63,7 +63,7 @@
             @enderror
         </div>
       </div>
-      
+
       <div class="form-group row align-items-center">
         <label class="col-md-2 col-form-label font-weight-medium" for="password">Password</label>
         <div class="col-md-10">
@@ -75,7 +75,7 @@
           @error('password')
           <div style="color:red;">{{ $message }}</div>
           @enderror
-      </div> 
+      </div>
 
       <div class="form-group row align-items-center">
         <label class="col-md-2 col-form-label font-weight-medium" for="role">Roles</label>
@@ -93,18 +93,18 @@
             @enderror
         </div>
       </div>
-          
+
       <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
 
-  </form>         
+  </form>
       </div>
 
 @endsection
 
 
-     
 
-    
+
+
 
 
 

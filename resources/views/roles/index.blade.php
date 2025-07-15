@@ -23,23 +23,21 @@
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->descride }}</td>
                     <td>
-                        
                         <div class="nav">
-                            <div class="nav-x">
-                            <form action="{{ route('role.destroy',$role->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger m-2" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá</button>
-                        </form>
-                        </div>
-                        
-                        <div class="nav-s">
-                            <a href="{{ route('role.edit', $role->id) }}">
-                             <button type="button" class="btn btn-primary m-2 ">Sửa</button>
-                        </a>
-                        </div>
-                        </div>
+                            <div class="nav-s">
+                                <a href="{{ route('role.edit', $role->id) }}">
+                                    <button type="button" class="btn btn-primary m-2 ">Sửa</button>
+                                </a>
+                            </div>
 
+                            <div class="nav-x">
+                                <form action="{{ route('role.destroy',$role->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-2" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             <tbody>
