@@ -92,5 +92,13 @@ th {
     display: none !important;
     content: none !important;
 }
+.header-custom {
+    color: white;
+}
+.menu li {
+    list-style: none;
+    margin: 10px;
+}
+
 
 

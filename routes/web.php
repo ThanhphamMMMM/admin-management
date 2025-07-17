@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
+//use App\\App\Http\Controllers\
 
 
 
@@ -23,7 +25,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/app',[AuthController::class, 'index']);
+Route::get('/app',[AuthController::class, 'index'])->name('app');
 
 //ROLE
 Route::get('/roles',[RoleController::class, 'index'])->name('role.index');
@@ -43,7 +45,16 @@ Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.de
 
 //AUTH
 Route::get('/login',[AuthController::class, 'showlogin'])->name('auth.login');
-Route::post('/checklogin',[AuthController::class, 'checklogin'])->name('auth.checklogin');
+Route::post('/checkLogin',[AuthController::class, 'checklogin'])->name('auth.checkLogin');
 
-Route::get('/register',[AuthController::class, 'showregister'])->name('auth.register');
+Route::get('/register',[AuthController::class, 'showRegister'])->name('auth.register');
 Route::post('/process',[AuthController::class,'process'])->name('auth.process');
+
+//FORGOT-PASSWORD
+Route::get('/verify-password',[ForgotPasswordController::class, 'showForm'])->name('password.request');
+Route::post('/verify-password',[ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'newPassword'])->name('password.reset');
+Route::post('/reset-password',[ForgotPasswordController::class,'storeNewPassword'])->name('password.update');
+
+

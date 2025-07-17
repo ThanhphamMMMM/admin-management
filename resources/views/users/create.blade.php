@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title','quản lí user')
-
+@section('title')
+quản lí user
+@endsection
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/create.css')}}">
-
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
 @endsection
 
 @section('content')
@@ -96,8 +96,8 @@
 
       <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
 
-  </form>
-      </div>
+    </form>
+ </div>
 
 @endsection
 

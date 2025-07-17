@@ -10,7 +10,7 @@
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
     <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/appmana.css')}}">
     @yield('css')
   </head>
     <!-- Body-->
@@ -27,7 +27,7 @@
                           <a class="nav-link" href="#">AVATA</a>
                               <ul class="dropdown-avata">
                                 <li><a class="dropdown-tt" href="#">Thông tin</a></li>
-                                <li><a class="dropdown-dx" href="#">Đăng xuất</a></li>
+                                <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng xuất</a></li>
                               </ul>
                     </div>
                   </ul>
@@ -51,28 +51,29 @@
                             </div>
                         </div>
                     </div>
-                        <!-- Dropdown -->
-                      <div class="dropdown">
-                        <button class="btn btn-primary ml-5 mb-5">
-                          <a href="#" class="text-decoration-none text-white">Trang chủ</a>
-                        </button>
-
-                        <button type="button" class="btn btn-primary dropdown-toggle ml-5 mb-5" data-bs-toggle="dropdown">
-                          Quản lý vai trò <i class="fe-chevron-down"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="{{ route('role.index')}}">Hiển thị danh sách vai trò</a></li>
-                          <li><a class="dropdown-item" href="{{ route('role.create')}}">Thêm mới vai trò</a></li>
+                        <!-- Dropdown-mune -->
+                    <div class="menu">
+                        <ul>
+                            <li class="dropdown-header ">
+                                <a href="#" > Trang chủ</a>
+                            </li>
                         </ul>
-
-                        <button type="button" class="btn btn-primary dropdown-toggle ml-5 mb-5 " data-bs-toggle="dropdown">
-                          Quản lý người dùng <i class="fe-chevron-down"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="{{ route('user.index')}}">Hiển thị danh sách & hồ sơ người dùng</a></li>
-                          <li><a class="dropdown-item" href="{{ route('user.create')}}">Thêm mới người dùng</a></li>
+                        <ul>
+                            <li class="dropdown-header header-custom">
+                                Quản lý vai trò
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('role.index')}}">Hiển thị danh sách vai trò</a></li>
+                            <li><a class="dropdown-item" href="{{ route('role.create')}}">Thêm mới vai trò</a></li>
                         </ul>
-                      </div>
+                        <ul>
+                            <li class="dropdown-header header-custom"></li>
+                            <li class="dropdown-header header-custom">
+                                Quản lý vai trò
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('user.index')}}">Hiển thị danh sách & hồ sơ người dùng</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.create')}}">Thêm mới người dùng</a></li>
+                        </ul>
+                    </div>
                 </aside>
                 <!-- CONTENT-->
                 <section class="pb-5 mb-md-2" id="tables-basic">

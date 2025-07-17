@@ -22,9 +22,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',  
-            'password'  =>'required|min:7|confirmed', // cần đặt đúng name input : password_confirmation để laravel có thể kieemr  tra
-            'fullname'  =>'required', 
+            'email'     =>'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email,',
+            'password'  =>'required|min:7|confirmed',
+            'fullname'  =>'required',
             'tel'       =>'required|max:10',
             'address'   =>'required',
             'birthday'      =>'required',
