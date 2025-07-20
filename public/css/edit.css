@@ -1,5 +1,5 @@
 .container {
-    border-radius: 10px;
+    border-radius: 15px;
 }
 .item {
     margin: 35px;
@@ -20,19 +20,6 @@
     border: #cbb3b3 solid 1px;
     padding-left: 15px;
 }
-
-.birthday {
-    width: 300px;
-}
-
-.role {
-    width: 200px;
-    height: 30px;
-    border: #cbb3b3 solid 1px;
-    border-radius: 10px;
-    padding: 5px;
-}
-
 button {
     width: 300px;
     height: 50px;
@@ -42,24 +29,8 @@ button {
     color: #ffff;
     background: rgb(54, 54, 197);
 }
-#descride {
-    height: 100px;
-}
-
-h1 {
-    margin-left: 600px;
-}
-
-a {
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-h2 a {
-    text-decoration: none;
-    border: #b2b1b1 solid 1px;
+#role {
     border-radius: 10px;
-    background: #dcdada;
-    padding: 5px;
-    margin-top: 10px;
+    width: 200px;
+    padding: 10px;
 }

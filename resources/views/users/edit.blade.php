@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
-@section('title','quản lí user')
+@section('title')
+    Quản lí user
+@endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+<link rel="stylesheet" href="{{ asset('css/edit.css')}}">
 @endsection
 
 

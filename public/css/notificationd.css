@@ -1,6 +1,7 @@
 .error {
     color: red;
     margin: 5px;
+    background: white;
 }
 
 .success {

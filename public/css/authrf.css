@@ -9,23 +9,13 @@ body {
 
 .error {
     color: red;
-    width: 333px;
-    height: 33px;
-    background: #bbbbbd;
-    border-radius: 5px;
-    border: #333 solid 1px;
     text-align: center;
-    padding:20px;
+    margin: 5px;
 }
 .success {
     color: green;
-    width: 333px;
-    height: 33px;
-    background: #bbbbbd;
-    border-radius: 5px;
-    border: #333 solid 1px;
     text-align: center;
-    padding:20px;
+    margin: 5px;
 }
 
 

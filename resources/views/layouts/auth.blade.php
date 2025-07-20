@@ -3,21 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
-    <!-- import css-->
-    <link rel="stylesheet" href="{{ asset('css/notificationd.css')}}">
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/simplebar/dist/simplebar.min.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/authrf.css') }}">
      @yield('css')
   </head>
-  <!-- Body-->
   <body>
 
     <main class="cs-page-wrapper d-flex flex-column">
-      <!-- image right-->
       <div class="d-none d-md-block position-absolute w-50 h-100 bg-size-cover image-custom ">
       </div>
-      <!-- Actual content-->
       <section class="container d-flex align-items-center pt-7 pb-3 pb-md-4" >
         <div class="w-100 pt-3">
           <div class="row ">

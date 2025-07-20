@@ -4,9 +4,6 @@
     Sign up
 @endsection
 
-@section('css')
-@endsection
-
 @section('heading')
     Register
 @endsection
@@ -71,7 +68,8 @@
         </div>
         <button class="btn btn-primary btn-block" type="submit">Register</button>
         <p class="font-size-sm pt-3 mb-0">Already have an account?
-            <a
+            <a href=" {{ route('auth.login') }}" >Log in</a>
+        </p>
 @endsection
 @section('js')
 @endsection

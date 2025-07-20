@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\ForgotPasswordController;
 
 
 /*
@@ -23,15 +23,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('/app',[AuthController::class, 'index']);
+Route::get('/app', [AuthController::class, 'index'])->name('app');
 
 //ROLE
-Route::get('/roles',[RoleController::class, 'index'])->name('role.index');
-Route::get('role/create',[RoleController::class, 'create'])->name('role.create');
-Route::post('role/store',[RoleController::class, 'store'])->name('role.store');
+Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
+Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('role/store', [RoleController::class, 'store'])->name('role.store');
 Route::get('role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
-Route::post('role/update/{id}',[RoleController::class,'update'])->name('role.update');
-Route::delete('/destroy/{id}',[RoleController::class,'destroy'])->name('role.destroy');
+Route::post('role/update/{id}', [RoleController::class, 'update'])->name('role.update');
+Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
 
 //  USER
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
@@ -42,8 +42,13 @@ Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.u
 Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 //AUTH
-Route::get('/login',[AuthController::class, 'showlogin'])->name('auth.login');
-Route::post('/checklogin',[AuthController::class, 'checklogin'])->name('auth.checklogin');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
+Route::post('/checkLogin', [AuthController::class, 'checkLogin'])->name('auth.checkLogin');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.reGisTer');
+Route::post('/process', [AuthController::class, 'process'])->name('auth.process');
 
-Route::get('/register',[AuthController::class, 'showregister'])->name('auth.register');
-Route::post('/process',[AuthController::class,'process'])->name('auth.process');
+//FORGOT PASSWORD
+Route::get('/resetEmail', [ForgotPasswordController::class, 'showForm'])->name('forgot.verify_password');
+Route::post('/resetEmail', [ForgotPasswordController::class, 'sendResetLink'])->name('reset.email');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPassword'])->name('password.reset');
+Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPassword'])->name('password.update');

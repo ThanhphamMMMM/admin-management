@@ -9,9 +9,12 @@
 
 @section('content')
 <h3>Danh sách tài khoản & hồ sơ tài khoản</h3>
-     <table>
+<a href="{{ route('user.create') }} " class="btn btn-success float-end m-3"> Thêm người dùng</a>
+
+     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Stt</th>
                 <th>Email</th>
                 <th>Fullname</th>
@@ -26,6 +29,7 @@
         <tbody>
             @foreach($users as $user)
                 <tr>
+                    <td></td>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ optional($user->profile)->full_name }}</td>
@@ -47,7 +51,7 @@
                                 <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-danger m-2" onclick="return confirm('xác nhận xoá người user này không')">Xoá</button>
+                                    <button type="button" class="btn btn-danger m-2" onclick="return confirm('xác nhận xoá người dùng này không')">Xoá</button>
                                 </form>
                             </div>
                         </div>

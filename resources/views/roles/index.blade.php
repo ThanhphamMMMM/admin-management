@@ -8,6 +8,7 @@
 
 @section('content')
 <h3>Danh sách vai trò</h3>
+    <a href="{{ route('role.create') }} " class="btn btn-success float-end m-3"> Thêm vai trò</a>
      <table>
         <thead>
             <tr>
