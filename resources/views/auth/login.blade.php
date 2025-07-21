@@ -38,7 +38,7 @@
             <a class="nav-link-style font-size-ms" href="{{ route('forgot.verify_password') }}">Forgot password?</a>
         </div>
 
-        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
         <p class="font-size-sm pt-3 mb-0">Don't have an account?
             <a class='font-weight-medium' data-view='#signup-view' href='{{ route('auth.reGisTer')}}'>Register</a>
 

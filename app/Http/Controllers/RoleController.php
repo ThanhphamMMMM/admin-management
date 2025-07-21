@@ -11,9 +11,8 @@ class RoleController extends Controller
 
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::paginate(10);
         return view('roles.index', compact('roles'));
-
     }
 
     public function create()
@@ -34,9 +33,9 @@ class RoleController extends Controller
             $role->descride = $request->descride;
             $role->save();
 
-            return redirect()->route('role.index')->with('success', 'thêm vai trò thành công');
+            return redirect()->route('role.index')->with('success', 'Thêm vai trò thành công');
         } catch (\Exception $e) {
-            return back()->with('error', 'tạo vai trò thất bại' . $e->getMessage());
+            return back()->with('error', 'Thêm vai trò thất bại' . $e->getMessage());
         }
     }
 
@@ -60,9 +59,9 @@ class RoleController extends Controller
             $role->descride = $request->descride;
             $role->save();
 
-            return redirect()->route('role.index')->with('success', 'sửa vai trò thành công');
+            return redirect()->route('role.index')->with('success', 'Sửa vai trò thành công');
         } catch (\Exception $e) {
-            return back()->with('error', 'sửa vai trò thất bại' . $e->getMessage());
+            return back()->with('error', 'Sửa vai trò thất bại' . $e->getMessage());
         }
 
 
@@ -75,7 +74,7 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return redirect()->route('role.index')->with('success', 'xoá vai trò thành công');
+        return redirect()->route('role.index')->with('success', 'Xoá vai trò thành công');
     }
 
 

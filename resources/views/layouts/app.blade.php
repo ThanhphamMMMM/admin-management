@@ -10,8 +10,7 @@
     <link rel="stylesheet" media="screen"
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
     <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/appha.css')}}">
     @yield('css')
 </head>
 <!-- Body-->
@@ -127,8 +126,10 @@
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-javascript.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-pug.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.min.js')}}"></script>
-                    <script src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
-                    <script src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
+                    <script
+                        src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
+                    <script
+                        src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="{{ asset('theme/js/theme.min.js')}}"></script>
 @yield('js')

@@ -1,6 +1,11 @@
 .nav {
     display: flex;
+    gap: 10px;
 }
+.nav-delete {
+    width: 70px;
+}
+
 .col-xl-9 {
     margin-top: 150px;
 }
@@ -129,6 +134,13 @@ th {
 .menu-item.active .submenu {
     display: block;
 }
+.TableCustom th {
+    text-align: center;
+}
+.avatar-custom {
+    border-radius: 10px;
+}
+
 
 
 

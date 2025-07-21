@@ -5,7 +5,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/simplebar/dist/simplebar.min.css')}}"/>
     <link rel="stylesheet" media="screen" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/authrf.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
      @yield('css')
   </head>
   <body>

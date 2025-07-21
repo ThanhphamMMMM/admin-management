@@ -59,13 +59,13 @@ class UserController extends Controller
             $profile->user_id = $user->id; // Gắn khoá ngoại
             $profile->save();
 
-            return redirect()->route('user.index')->with('success', 'Thêm user thành công!');
+            return redirect()->route('user.index')->with('success', 'Thêm tài khoản thành công!');
         } catch (\Exception  $e) {
-            return back()->with('error', 'Thêm user thất bại' . $e->getMessage());
+            return back()->with('error', 'Thêm tài khoản thất bại' . $e->getMessage());
         }
     }
 
-    public function edit($id):RedirectResponse
+    public function edit($id)
     {
         $user = User::with('profile')->findOrfail($id);
         $roles = Role::all();
@@ -105,9 +105,9 @@ class UserController extends Controller
             $profile->user_id = $user->id; // Gắn khoá ngoại
             $profile->save();
 
-            return redirect()->route('user.index')->with('success', 'Cập nhật  thành công!');
+            return redirect()->route('user.index')->with('success', 'Cập nhật tài khoản thành công!');
         } catch (\Exception $e) {
-            return redirect()->back()->route('user.edit')->with('error', 'Cập nhật thất bại');
+            return redirect()->back()->route('user.edit')->with('error', 'Cập nhật tài khoản thất bại');
         }
     }
 
@@ -118,7 +118,7 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'xoÁ user thành công!');
+        return redirect()->route('user.index')->with('success', 'XoÁ tài khoản thành công!');
     }
 
 }
