@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -41,14 +42,17 @@ class AuthController extends Controller
     }
 
 
-    public function process(LoginRequest $request)
+    public function process(LoginRequest $request): RedirectResponse
     {
 
         try {
+            $userRole = Role::where('name', 'user')->first();
+
+
             $user = new User();
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role_id = 5;
+            $user->role_id = $userRole->id;
             $user->save();
 
             $profile = new Profile();
@@ -65,7 +69,7 @@ class AuthController extends Controller
         }
     }
 
-    public function index()
+    public function index(): View
     {
         return view('layouts/app');
     }

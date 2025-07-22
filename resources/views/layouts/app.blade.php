@@ -10,7 +10,7 @@
     <link rel="stylesheet" media="screen"
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
     <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/appha.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/appba.css')}}">
     @yield('css')
 </head>
 <!-- Body-->
@@ -25,8 +25,10 @@
                 <button class="navbar-toggler d-block d-lg-none mr-3 ml-auto" type="button" data-toggle="offcanvas"
                         data-offcanvas-id="componentsNav"></button>
                 <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                    <div class="nav-item dropdown-avata-wrapper mr-5">
-                        <a class="nav-link" href="#">Avatar</a>
+                    <div class="nav-item dropdown-avata-wrapper mr-3">
+                        <a class="nav-link" href="#">
+                            <img class=" avatar-custom" src="{{ asset('images/anhavatar.png') }}" alt="avatar">
+                        </a>
                         <ul class="dropdown-avata">
                             <li><a class="dropdown-tt" href="#">Thông tin</a></li>
                             <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng xuất</a></li>
@@ -37,8 +39,8 @@
             <!-- MENU LEFT-->
             <aside class="cs-offcanvas cs-offcanvas-collapse bg-dark">
                 <div id="componentsNav">
-                    <div class="cs-offcanvas-cap bg-darker d-none d-lg-block py-2">
-                        <a class="navbar-brand py-1 ml-3" href="#">
+                    <div class="cs-offcanvas-cap bg-darker d-none d-lg-block py-2 cs-offcanvas-cap">
+                        <a class="navbar-brand py-1 ml-3" href="{{ route('app') }}">
                             <img class="img-custom" src="{{ asset('images/anhlogo.png') }}" alt="anhlogo">
                         </a>
                     </div>
@@ -59,7 +61,7 @@
 
                     <div class="menu-item text-left">
                         <div class="menu-title">
-                            <a href="#">Trang chủ</a>
+                            <a href="{{ route('app') }}">Trang chủ</a>
                         </div>
                     </div>
 

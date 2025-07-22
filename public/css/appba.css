@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
 }
+
 .nav-delete {
     width: 70px;
 }
@@ -9,15 +10,15 @@
 .col-xl-9 {
     margin-top: 150px;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-th,
-td {
-    border: 1px solid #881a1a;
+th, td {
+    border: 1px solid #cfcccc;
     padding: 8px;
     text-align: left;
 }
@@ -25,29 +26,35 @@ td {
 th {
     background-color: #f2f2f2;
 }
+
 .col_custom {
     margin-top: 123px;
 }
+
 .custem-navbar {
     margin-left: 400px;
 }
+
 .gap-100px {
     gap: 100px;
 }
+
 .dropdown {
     margin-top: 75px;
 }
+
 .dropdown-list {
     padding: 10px;
     margin: 15px;
     background: white;
     border-radius: 20px;
-    /*margin-bottom: 50px;*/
 }
+
 .dropdown-list a {
     text-decoration: none;
     color: black;
 }
+
 .dropdown-list:hover .dropdown-item {
     display: block;
 }
@@ -77,12 +84,14 @@ th {
     margin-top: 5px;
     border-radius: 5px;
 }
+
 .img-custom {
-    width : 60px;
-    height : 60px;
-    margin:  15px;
+    width: 60px;
+    height: 60px;
+    margin: 15px;
 }
-.offset-custom{
+
+.offset-custom {
     right: 0;
     bottom: 0;
 }
@@ -93,14 +102,15 @@ th {
 }
 
 
-
 .dropdown-toggle::after {
     display: none !important;
     content: none !important;
 }
+
 .header-custom {
     color: white;
 }
+
 .menu li {
     list-style: none;
     margin: 10px;
@@ -115,16 +125,19 @@ th {
     color: white;
     padding: 10px;
     cursor: pointer;
-    margin: 10px 0  0 35px;
+    margin: 10px 0 0 35px;
     font-size: 20px;
 }
+
 .menu-title a {
-   color: white;
+    color: white;
 }
+
 .submenu {
     display: none;
     padding-left: 20px;
 }
+
 .submenu-custom a {
     color: white;
     list-style: none;
@@ -135,18 +148,22 @@ th {
 .menu-item.active .submenu {
     display: block;
 }
+
 .TableCustom th {
     text-align: center;
 }
+
 .avatar-custom {
     border-radius: 50px;
-    width : 50px;
-    height : 50px;
+    width: 50px;
+    height: 50px;
     margin-left: 30px;
 }
+
 .cs-offcanvas-cap {
     height: 103px;
 }
+
 .nav-custom {
     text-align: right;
 }

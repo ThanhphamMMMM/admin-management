@@ -13,9 +13,14 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
 .nav {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
-.nav-custom {
-    text-align: center;
+.TableCustom th {
+    background: rgba(198, 196, 196, 0.8);
 }
+

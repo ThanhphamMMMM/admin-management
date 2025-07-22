@@ -3,7 +3,9 @@
 @section('title')
     quản lí role
 @endsection
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/indexcut.css')}}">
+@endsection
 @section('content')
     <h3>Danh sách vai trò</h3>
     @if (session('success'))
@@ -30,19 +32,19 @@
         </thead>
         @foreach($roles as $role)
             <tr>
-                <td>{{ $role->id }}</td>
-                <td>{{ $role->name }}</td>
-                <td>{{ $role->descride }}</td>
+                <td class="text-center">{{ $role->id }}</td>
+                <td class="text-center">{{ $role->name }}</td>
+                <td class="text-center">{{ $role->descride }}</td>
                 <td>
-                    <div class="nav">
-                        <div class="nav-update">
-                            <a href="{{ route('role.edit', $role->id) }}">
+                    <div class="nav nav-custom">
+                        <div class="nav-delete">
+                            <a href="{{ route('role.edit',$role->id)}}">
                                 <button type="button" class="btn btn-primary m-2 ">Sửa</button>
                             </a>
                         </div>
 
-                        <div class="nav-delete">
-                            <form action="{{ route('role.destroy',$role->id)}}" method="POST">
+                        <div class="nav-update">
+                            <form action="{{ route('role.destroy', $role->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger m-2"

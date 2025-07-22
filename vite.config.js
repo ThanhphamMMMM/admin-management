@@ -5,9 +5,9 @@ export default defineConfig({
     plugins: [
         laravel({
 <<<<<<< Updated upstream
-            input: ['resources/css/appha.css', 'resources/js/app.js'],
+            input: ['resources/css/appba.css', 'resources/js/app.js'],
 =======
-            input: ['resources/css/appha.css', 'resources/js/app.js'],
+            input: ['resources/css/appba.css', 'resources/js/app.js'],
 >>>>>>> Stashed changes
             refresh: true,
         }),

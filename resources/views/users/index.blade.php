@@ -3,6 +3,9 @@
 @section('title')
     quản lí user
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/indexcut.css')}}">
+@endsection
 
 @section('content')
     <h3>Danh sách tài khoản</h3>
@@ -37,14 +40,14 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ optional($user->profile)->full_name }}</td>
-                <td>{{ optional($user->profile)->phone }}</td>
-                <td>{{ optional($user->profile)->address }}</td>
-                <td>{{ optional($user->profile)->birthday }}</td>
-                <td>{{ $user->role->name }}</td>
-                <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                <td class="text-center">{{ $user->id }}</td>
+                <td class="text-center">{{ $user->email }}</td>
+                <td class="text-center">{{ optional($user->profile)->full_name }}</td>
+                <td class="text-center">{{ optional($user->profile)->phone }}</td>
+                <td class="text-center">{{ optional($user->profile)->address }}</td>
+                <td class="text-center">{{ optional($user->profile)->birthday }}</td>
+                <td class="text-center">{{ $user->role->name }}</td>
+                <td class="text-center">{{ $user->created_at->format('d/m/Y') }}</td>
                 <td>
                     <div class="nav">
                         <div class="nav-delete">
