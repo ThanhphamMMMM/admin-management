@@ -17,7 +17,7 @@ table {
 
 th,
 td {
-    border: 1px solid #ddd;
+    border: 1px solid #881a1a;
     padding: 8px;
     text-align: left;
 }
@@ -78,8 +78,9 @@ th {
     border-radius: 5px;
 }
 .img-custom {
-    width : 50px;
-    height : 50px;
+    width : 60px;
+    height : 60px;
+    margin:  15px;
 }
 .offset-custom{
     right: 0;
@@ -138,8 +139,18 @@ th {
     text-align: center;
 }
 .avatar-custom {
-    border-radius: 10px;
+    border-radius: 50px;
+    width : 50px;
+    height : 50px;
+    margin-left: 30px;
 }
+.cs-offcanvas-cap {
+    height: 103px;
+}
+.nav-custom {
+    text-align: right;
+}
+
 
 
 
