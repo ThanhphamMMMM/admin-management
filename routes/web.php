@@ -55,6 +55,6 @@ Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPasswo
 
 
 Route::get('/redirect-by-role', function () {
-    return 'Login thành công';
-})->middleware('check.role');
+//    return 'Login thành công';
+})->middleware('check.role')->name('redirect.by.role');
 

@@ -30,12 +30,7 @@ class AuthController extends Controller
         if ($user) {
             if (Hash::check($password, $user->password)) {
                 Auth::login($user);
-
-                if ($user->role->name === 'admin') {
-                    return redirect()->route('app');
-                }else {
-                    return redirect()->route('welcome');
-                }
+                return redirect()->route('redirect.by.role');
             } else {
                 return redirect()->back()->withInput()->with('error', 'sai mật khẩu');
             }

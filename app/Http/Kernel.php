@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
+use App\Http\Middleware\RedirectByRole;
 class Kernel extends HttpKernel
 {
     /**
@@ -54,7 +54,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        "check.role" => \App\Http\Middleware\RedirectByRoleS::class,
+        'check.role' => RedirectByRole::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
@@ -67,7 +67,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
     protected $routeMiddleware = [
-        'check.role' => \App\Http\Middleware\RedirectByRoleS::class,
+        'check.role' => RedirectByRole::class,
     ];
+
 
 }

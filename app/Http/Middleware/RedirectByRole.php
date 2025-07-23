@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectByRoleS
+class RedirectByRole
 {
     /**
      * Handle an incoming request.
@@ -25,12 +25,12 @@ class RedirectByRoleS
 
         $user->loadMissing('role');
 
-        if ($user->role) {
-            if ($user->role?->name !== 'admin') {
-                return redirect('/');
-            }
+        if (!$user->role || $user->role->name !== 'admin') {
+
+            return redirect()->route('welcome');
         }
 
-        return $next($request);
+
+        return redirect()->route('app');
     }
 }
