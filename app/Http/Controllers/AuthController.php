@@ -9,34 +9,42 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showlogin():View
+    public function showlogin(): View
     {
         return view('auth.login');
     }
 
-    public function checkLogin(Request $request)
+    public function checkLogin(Request $request): RedirectResponse
     {
-
         $email = $request->input('email');
         $password = $request->input('password');
-        $user = User::where('email', $email)->first();
 
+        $user = User::with('role')->where('email', $email)->first(); // lấy role
+
+        /** @var \App\Models\User|null $user */
         if ($user) {
             if (Hash::check($password, $user->password)) {
-                return view('layouts.app');
+                Auth::login($user);
+
+                if ($user->role->name === 'admin') {
+                    return redirect()->route('app');
+                }else {
+                    return redirect()->route('welcome');
+                }
             } else {
-                return redirect()->back()->withInput($request->all)->with('error', 'sai nhập khẩu');
+                return redirect()->back()->withInput()->with('error', 'sai mật khẩu');
             }
         } else {
-            return redirect()->back()->withInput($request->all)->with('error', 'email không tồn tại');
+            return redirect()->back()->withInput()->with('error', ' email chưa tồn tại');
         }
     }
 
-    public function showRegister():View
+    public function showRegister(): View
     {
         return view('auth.reGisTer');
     }

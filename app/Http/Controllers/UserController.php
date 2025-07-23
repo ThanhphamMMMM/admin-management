@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Http\Request;
 
 use App\Models\Role;
@@ -17,20 +18,20 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
 
-    public function index():View
+    public function index(): View
     {
 
         $users = User::with(['profile', 'role'])->paginate(10);
         return view('users.index', compact('users'));
     }
 
-    public function create():View
+    public function create(): View
     {
         $roles = Role::all();
         return view('users.create', compact('roles'));
     }
 
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
 
@@ -65,7 +66,7 @@ class UserController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($id):View
     {
         $user = User::with('profile')->findOrfail($id);
         $roles = Role::all();
@@ -112,8 +113,7 @@ class UserController extends Controller
     }
 
 
-
-    public function destroy($id):RedirectResponse
+    public function destroy($id): RedirectResponse
     {
         $user = User::findOrfail($id);
         $user->delete();

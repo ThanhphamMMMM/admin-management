@@ -13,9 +13,9 @@ class Role extends Model
         'name', 'descride'
     ];
 
-    public function roleuser() {
+    public function users() {
 
-        return $this->hasMany(User::class, 'users');
+        return $this->hasMany(User::class, 'role_id');
     }
-    
+
 }

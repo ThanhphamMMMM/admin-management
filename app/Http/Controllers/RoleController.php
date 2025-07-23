@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Http\RedirectResponse;
 use App\Models\Role;
+use Illuminate\View\View;
 
 class RoleController extends Controller
 {
 
-    public function index()
+    public function index(): View
     {
         $roles = Role::paginate(10);
         return view('roles.index', compact('roles'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('roles.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|unique:roles',
@@ -39,13 +40,13 @@ class RoleController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
         $role = Role::findOrFail($id);
         return view('roles.edit', compact('role'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): RedirectResponse
     {
         $role = Role::findOrfail($id);
         $request->validate([
@@ -67,7 +68,7 @@ class RoleController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
 
         $role = Role::findOrfail($id);

@@ -20,7 +20,7 @@ use App\Http\Controllers\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 Route::get('/app', [AuthController::class, 'index'])->name('app');
@@ -52,4 +52,9 @@ Route::get('/resetEmail', [ForgotPasswordController::class, 'showForm'])->name('
 Route::post('/resetEmail', [ForgotPasswordController::class, 'sendResetLink'])->name('reset.email');
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPassword'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPassword'])->name('password.update');
+
+
+Route::get('/redirect-by-role', function () {
+    return 'Login thành công';
+})->middleware('check.role');
 

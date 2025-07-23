@@ -19,8 +19,8 @@
             <div class="col-lg-4 col-md-6 offset-lg-1">
               <!-- view form-->
               <div class="cs-view show" id="signin-view">
-                <h1 class="h2">@yield('heading')</h1>
-                <p class="font-size-ms text-muted mb-4">@yield('p')</p>
+                <h1 class="h1 text-left">@yield('heading')</h1>
+                <p class="font-size-ms text-muted mb-4 text-left">@yield('p')</p>
 
                 @if (session('error'))
                     <div class="error">
