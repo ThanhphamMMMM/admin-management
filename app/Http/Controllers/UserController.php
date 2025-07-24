@@ -121,4 +121,7 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'XoÁ tài khoản thành công!');
     }
 
+
 }
+
+

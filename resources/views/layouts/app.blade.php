@@ -30,7 +30,7 @@
                             <img class=" avatar-custom" src="{{ asset('images/anhavatar.png') }}" alt="avatar">
                         </a>
                         <ul class="dropdown-avata">
-                            <li><a class="dropdown-tt" href="#">Thông tin</a></li>
+                            <li><a class="dropdown-tt" href="{{ route('myProfile') }}">Thông tin</a></li>
                             <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng xuất</a></li>
                         </ul>
                     </div>

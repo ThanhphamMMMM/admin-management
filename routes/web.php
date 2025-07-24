@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\MyprofileController;
 
 
 /*
@@ -53,8 +54,9 @@ Route::post('/resetEmail', [ForgotPasswordController::class, 'sendResetLink'])->
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPassword'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPassword'])->name('password.update');
 
+// checkrole->redee
+Route::get('/redirect-by-role', function () {})->middleware('check.role')->name('redirect.by.role');
 
-Route::get('/redirect-by-role', function () {
-//    return 'Login thành công';
-})->middleware('check.role')->name('redirect.by.role');
-
+// Myprofile
+Route::get('/my-profile', [MyprofileController::class, 'myProfile'])->name('myProfile');
+Route::post('/update-profile', [MyprofileController::class, 'Update'])->name('updateProfile');
