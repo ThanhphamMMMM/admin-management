@@ -4,7 +4,7 @@
     quản lí user
 @endsection
 
-@section('css')
+@section('style')
 <link rel="stylesheet" href="{{ asset('css/edit.css')}}">z
 @endsection
 
@@ -21,8 +21,8 @@
                         </div>
 
                         <div class="item">
-                            <label for="disride">Discridetion :</label>
-                            <input type="text" id="descride" name="descride"  value="{{ old('descride',$role->descride)}}" placeholder="Mô tả tổng quan về vai trò mới ">
+                            <label for="description">Description :</label>
+                            <input type="text" id="description" name="description"  value="{{ old('description',$role->description)}}" placeholder="Mô tả tổng quan về vai trò mới ">
                         </div>
 
                         <button type="submit"> Cập Nhật</button>

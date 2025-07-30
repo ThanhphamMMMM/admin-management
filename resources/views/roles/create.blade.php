@@ -4,7 +4,7 @@
     Quản lí user
 @endsection
 
-@section('css')
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 @endsection
 
@@ -13,6 +13,7 @@
      <div class="card-body">
         <form action="{{ route('role.store') }}" method="POST">
             @csrf
+{{--            Nhập tên role--}}
             <div class="tab-content">
                 <div class="form-group row align-items-center">
                     <label class="col-md-2 col-form-label font-weight-medium" for="name">Name</label>
@@ -20,11 +21,26 @@
                     <input class="form-control" type="text" id="name" name="name" placeholder="Nhập vai trò cần cần tạo " required>
                     </div>
                 </div>
-
+{{--                Mô tả role--}}
                 <div class="form-group row">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="descride">Description</label>
+                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Description</label>
                     <div class="col-md-10">
-                    <textarea class="form-control" id="descride" name="descride" rows="5"  placeholder="Mô tả chung về vai trò cần cần tạo "></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="5"  placeholder="Mô tả chung về vai trò cần cần tạo "></textarea>
+                    </div>
+                </div>
+{{--                    Gán quyền--}}
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Authority</label>
+                    <div class="col-md-10">
+                        @foreach($permissions as $permission)
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                    {{ $permission->description }} ({{ $permission->name }})
+                                </label>
+                            </div>
+
+                        @endforeach
                     </div>
                 </div>
 

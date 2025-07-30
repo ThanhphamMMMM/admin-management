@@ -9,9 +9,10 @@
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.css')}}"/>
     <link rel="stylesheet" media="screen"
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
-    <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/appba.css')}}">
-    @yield('css')
+        <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/appds.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/indexth.css') }}" >
+    @yield('style')
 </head>
 <!-- Body-->
 <body>
@@ -20,14 +21,14 @@
     <section class="cs-offcanvas-enabled row pb-3 pb-md-4 ">
         <div class="col-xl col_custom">
             <!-- Navbar-->
-            <header class="navbar navbar-expand navbar-light fixed-top navbar-box-shadow bg-light px-3 px-lg-4"
+            <header class="navbar navbar-expand navbar-light fixed-top navbar-box-shadow bg-light nav-custom"
                     data-scroll-header="">
                 <button class="navbar-toggler d-block d-lg-none mr-3 ml-auto" type="button" data-toggle="offcanvas"
                         data-offcanvas-id="componentsNav"></button>
                 <ul class="navbar-nav ml-auto d-none d-lg-flex">
                     <div class="nav-item dropdown-avata-wrapper mr-3">
                         <a class="nav-link" href="#">
-                            <img class=" avatar-custom" src="{{ asset('images/anhavatar.png') }}" alt="avatar">
+                            <img class="avatar-custom" src="{{ asset('images/anhavatar.png') }}" alt="avatar">
                         </a>
                         <ul class="dropdown-avata">
                             <li><a class="dropdown-tt" href="{{ route('myProfile') }}">Thông tin</a></li>
@@ -37,9 +38,9 @@
                 </ul>
             </header>
             <!-- MENU LEFT-->
-            <aside class="cs-offcanvas cs-offcanvas-collapse bg-dark">
+            <aside class="cs-offcanvas cs-offcanvas-collapse bg-dark menu-left-custom">
                 <div id="componentsNav">
-                    <div class="cs-offcanvas-cap bg-darker d-none d-lg-block py-2 cs-offcanvas-cap">
+                    <div class="cs-offcanvas-cap bg-darker d-none d-lg-block py-2 cs-offcanvas-cap nav-right-custom">
                         <a class="navbar-brand py-1 ml-3" href="{{ route('app') }}">
                             <img class="img-custom" src="{{ asset('images/anhlogo.png') }}" alt="anhlogo">
                         </a>
@@ -66,28 +67,20 @@
                     </div>
 
                     <div class="menu-item">
-                        <div class="menu-title text-left">Quản lý vai trò</div>
-                        <div class="submenu">
-                            <div class="submenu-custom text-left">
-                                <a href="{{ route('role.index') }}">Danh sách vai trò </a>
-                            </div>
+                        <div class="menu-title text-left"><a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai trò</a>
                         </div>
                     </div>
 
                     <div class="menu-item">
-                        <div class="menu-title text-left">Quản lý người dùng</div>
-                        <div class="submenu">
-                            <div class="submenu-custom text-left">
-                                <a href="{{ route('user.index') }}">Danh sách người dùng </a>
-                            </div>
+                        <div class="menu-title text-left"><a href="{{ route('user.index') }}">Quản lý người dùng </a>
                         </div>
                     </div>
                 </div>
 
             </aside>
             <!-- CONTENT-->
-            <section class="pb-5 mb-md-2" id="tables-basic">
-                <div class="card border-0 box-shadow-lg cardh">
+            <section class="pb-5 mb-md-2 content-custom " id="tables-basic">
+                <div class="card border-0 box-shadow-lg cardh ">
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="result1" role="tabpanel">

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Role;
-use Illuminate\View\View;
-
 class RoleController extends Controller
 {
 
@@ -18,20 +18,21 @@ class RoleController extends Controller
 
     public function create(): View
     {
-        return view('roles.create');
+        $permissions = Permission::all();
+        return view('roles.create', compact('permissions'));
     }
 
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|unique:roles',
-            'descride' => 'required',
+            'description' => 'required',
         ]);
 
         try {
             $role = new Role();
             $role->name = $request->name;
-            $role->descride = $request->descride;
+            $role->description = $request->description;
             $role->save();
 
             return redirect()->route('role.index')->with('success', 'Thêm vai trò thành công');
@@ -52,12 +53,12 @@ class RoleController extends Controller
         $request->validate([
 
             'name' => 'required|unique:roles,name,' . $id,
-            'descride' => 'required',
+            'description' => 'required',
         ]);
 
         try {
             $role->name = $request->name;
-            $role->descride = $request->descride;
+            $role->description = $request->description;
             $role->save();
 
             return redirect()->route('role.index')->with('success', 'Sửa vai trò thành công');

@@ -1,3 +1,6 @@
+* {
+    font-size: 15px;
+}
 .nav {
     display: flex;
     gap: 10px;
@@ -67,6 +70,7 @@ th {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 130px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 999;
 }
@@ -86,9 +90,8 @@ th {
 }
 
 .img-custom {
-    width: 60px;
-    height: 60px;
-    margin: 15px;
+    width: 40px;
+    height: 40px;
 }
 
 .offset-custom {
@@ -133,21 +136,6 @@ th {
     color: white;
 }
 
-.submenu {
-    display: none;
-    padding-left: 20px;
-}
-
-.submenu-custom a {
-    color: white;
-    list-style: none;
-    margin-left: 35px;
-}
-
-
-.menu-item.active .submenu {
-    display: block;
-}
 
 .TableCustom th {
     text-align: center;
@@ -155,17 +143,27 @@ th {
 
 .avatar-custom {
     border-radius: 50px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-left: 30px;
 }
-
 .cs-offcanvas-cap {
     height: 103px;
 }
 
 .nav-custom {
     text-align: right;
+    height: 55px;
+}
+.nav-right-custom{
+    height: 55px;
+}
+.menu-left-custom {
+    width: 260px;
+}
+.content-custom {
+    margin-left: -100px;
+    width: 1230px;
 }
 
 

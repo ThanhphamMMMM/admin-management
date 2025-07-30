@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MyprofileController;
+use App\Http\Controllers\RolePermissionController;
 
 
 /*
@@ -60,3 +61,7 @@ Route::get('/redirect-by-role', function () {})->middleware('check.role')->name(
 // Myprofile
 Route::get('/my-profile', [MyprofileController::class, 'myProfile'])->name('myProfile');
 Route::post('/update-profile', [MyprofileController::class, 'Update'])->name('updateProfile');
+
+//Permission
+//Route::get('/roles/{role}/permissions', [RolePermissionController::class::class, 'permissions'])->name('roles.permissions');
+//Route::post('/roles/{role}/permissions', [RolePermissionController::class::class, 'addPermission'])->name('roles.addPermission');

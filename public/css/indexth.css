@@ -1,4 +1,5 @@
-table {
+
+.table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -18,9 +19,18 @@ th {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 3px;
 }
+
 .TableCustom th {
     background: rgba(198, 196, 196, 0.8);
 }
-
+.th-custom {
+    width: 160px;
+}
+.hh-custom {
+    width: 100px;
+}
+.kh-custom {
+    width: 30px;
+}

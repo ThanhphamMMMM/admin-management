@@ -4,7 +4,7 @@
     Quản lí user
 @endsection
 
-@section('css')
+@section('style')
 <link rel="stylesheet" href="{{ asset('css/edit.css')}}">
 @endsection
 

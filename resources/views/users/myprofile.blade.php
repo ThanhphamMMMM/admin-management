@@ -3,7 +3,7 @@
 @section('title')
     my-profile
 @endsection
-@section('css')
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/myprofilepa.css')}}">
 @endsection
 

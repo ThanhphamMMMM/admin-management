@@ -3,7 +3,7 @@
 @section('title')
     Quản lí user
 @endsection
-@section('css')
+@section('style')
     <link rel="stylesheet" href="{{ asset('css/create.css')}}">
 @endsection
 @section('title')

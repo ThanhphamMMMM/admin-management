@@ -3,8 +3,8 @@
 @section('title')
     quản lí role
 @endsection
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/indexcut.css')}}">
+@section('style')
+    <link rel="stylesheet" href="{{ asset('css/indexth.css')}}">
 @endsection
 @section('content')
     <h3>Danh sách vai trò</h3>
@@ -26,7 +26,7 @@
         <tr class="TableCustom">
             <th>STT</th>
             <th>Name Role</th>
-            <th>Descride</th>
+            <th>Description</th>
             <th>Thao tác</th>
         </tr>
         </thead>
@@ -34,12 +34,12 @@
             <tr>
                 <td class="text-center">{{ $role->id }}</td>
                 <td class="text-center">{{ $role->name }}</td>
-                <td class="text-center">{{ $role->descride }}</td>
+                <td class="text-center">{{ $role->description }}</td>
                 <td>
                     <div class="nav nav-custom">
                         <div class="nav-delete">
                             <a href="{{ route('role.edit',$role->id)}}">
-                                <button type="button" class="btn btn-primary m-2 ">Sửa</button>
+                                <button type="button" class="btn btn-primary m-2 btn-sm ">Sửa</button>
                             </a>
                         </div>
 
@@ -47,7 +47,7 @@
                             <form action="{{ route('role.destroy', $role->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger m-2"
+                                <button type="submit" class="btn btn-danger m-2 btn-sm"
                                         onclick="return confirm('Bạn  chắc chắn muốn xoá không?')">Xoá
                                 </button>
                             </form>
