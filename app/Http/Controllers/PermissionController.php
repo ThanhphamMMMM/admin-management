@@ -5,7 +5,7 @@ use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class RolePermissionController extends Controller
+class PermissionController extends Controller
 {
 
 }

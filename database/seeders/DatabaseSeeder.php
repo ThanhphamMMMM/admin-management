@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
 //        $this->call([PermissionScreenSeeder::class]);
 //        $this->call([ScreenSeeder::class]);
 //        $this->call([UserSeeder::class]);
+        $this->call(PermissionRoleSeeder::class);
     }
 }

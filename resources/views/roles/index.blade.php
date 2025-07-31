@@ -20,7 +20,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Đóng"></button>
         </div>
     @endif
-    <a href="{{ route('role.create') }} " class="btn btn-success float-end m-3"> Thêm vai trò</a>
+    @if(Auth::user()->role->permissions->contains('name', 'role.create'))
+        <a href="{{ route('role.create') }} " class="btn btn-success float-end m-3"> Thêm vai trò</a>
+    @endif
     <table>
         <thead>
         <tr class="TableCustom">
@@ -44,13 +46,15 @@
                         </div>
 
                         <div class="nav-update">
-                            <form action="{{ route('role.destroy', $role->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger m-2 btn-sm"
-                                        onclick="return confirm('Bạn  chắc chắn muốn xoá không?')">Xoá
-                                </button>
-                            </form>
+                            @if(Auth::user()->role->permissions->contains('name', 'role.create'))
+                                <form action="{{ route('role.destroy', $role->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-2 btn-sm"
+                                            onclick="return confirm('Bạn  chắc chắn muốn xoá không?')">Xoá
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </td>

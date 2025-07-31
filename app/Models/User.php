@@ -34,6 +34,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function hasPermissions($permission) {
+        return $this->role && $this->role->permissions->contains('name',$permission);
+    }
+
     // /**
     //  * The attributes that should be hidden for serialization.
     //  *

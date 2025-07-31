@@ -9,9 +9,9 @@
     <link rel="stylesheet" media="screen" href="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.css')}}"/>
     <link rel="stylesheet" media="screen"
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
-        <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/appds.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/indexth.css') }}" >
+    <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/appds.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/indexth.css') }}">
     @yield('style')
 </head>
 <!-- Body-->
@@ -31,8 +31,8 @@
                             <img class="avatar-custom" src="{{ asset('images/anhavatar.png') }}" alt="avatar">
                         </a>
                         <ul class="dropdown-avata">
-                            <li><a class="dropdown-tt" href="{{ route('myProfile') }}">Thông tin</a></li>
-                            <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng xuất</a></li>
+                            <li><a class="dropdown-tt" href="{{ route('myProfile') }}">Thông Tin</a></li>
+                            <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng Xuất</a></li>
                         </ul>
                     </div>
                 </ul>
@@ -65,16 +65,30 @@
                             <a href="{{ route('app') }}">Trang chủ</a>
                         </div>
                     </div>
+                    @php
+                        use Illuminate\Support\Facades\Auth;
 
-                    <div class="menu-item">
-                        <div class="menu-title text-left"><a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai trò</a>
-                        </div>
-                    </div>
+                    @endphp
 
-                    <div class="menu-item">
-                        <div class="menu-title text-left"><a href="{{ route('user.index') }}">Quản lý người dùng </a>
+                    @php
+                        $user = Auth::user();
+                    @endphp
+
+                    @if (in_array($user?->role?->name, ['admin', 'editor']))
+                        <div class="menu-item">
+                            <div class="menu-title text-left">
+                                <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai trò</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
+                    @if (in_array($user?->role?->name, ['admin', 'editor']))
+                        <div class="menu-item">
+                            <div class="menu-title text-left">
+                                <a href="{{ route('user.index') }}">Quản lý nhân sự </a></div>
+                        </div>
+                    @endif
+
                 </div>
 
             </aside>

@@ -22,7 +22,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Đóng"></button>
         </div>
     @endif
-    <a href="{{ route('user.create') }} " class="btn btn-success float-end m-3"> Thêm người dùng</a>
+    @if(Auth::user()->role->permissions->contains('name','user.create'))
+        <a href="{{ route('user.create') }} " class="btn btn-success float-end m-3"> Thêm người dùng</a>
+    @endif
+
 
     <table class="table">
         <thead>
@@ -48,23 +51,30 @@
                 <td class="text-center">{{ optional($user->profile)->address }}</td>
                 <td class="text-center">{{ optional($user->profile)->birthday }}</td>
                 <td class="text-center">{{ $user->role->name }}</td>
-                <td class="text-center">{{ $user->created_at->format('d/m/Y') }}</td>
+                <td class="text-center">
+                    {{ $user->created_at ? $user->created_at->format('d/m/Y') : 'Chưa có' }}
+                </td>
                 <td>
                     <div class="nav">
                         <div class="nav-delete">
-                            <a href="{{ route('user.edit',$user->id)}}">
-                                <button type="button" class="btn btn-primary m-1 btn-sm ">Sửa</button>
-                            </a>
+                            @if(Auth::user()->role->permissions->contains('name', 'user.edit'))
+                                <a href="{{ route('user.edit',$user->id)}}">
+                                    <button type="button" class="btn btn-primary m-1 btn-sm ">Sửa</button>
+                                </a>
+                            @endif
                         </div>
 
                         <div class="nav-update">
-                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger m-1 btn-sm"
-                                        onclick="return confirm('Bạn  chắc chắn muốn xoá không?')">Xoá
-                                </button>
-                            </form>
+                            @if(Auth::user()->role->permissions->contains('name', 'user.destroy'))
+                                <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-1 btn-sm"
+                                            onclick="return confirm('Bạn  chắc chắn muốn xoá không?')">Xoá
+                                    </button>
+                                </form>
+                            @endif
+
                         </div>
                     </div>
                 </td>

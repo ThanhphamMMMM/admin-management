@@ -14,6 +14,10 @@ return [
     */
 
     'defaults' => [
+        'user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
         'guard' => 'web',
         'passwords' => 'users',
     ],

@@ -32,10 +32,10 @@ class AuthController extends Controller
                 Auth::login($user);
                 return redirect()->route('redirect.by.role');
             } else {
-                return redirect()->back()->withInput()->with('error', 'sai mật khẩu');
+                return redirect()->back()->withInput()->with('error', 'Sai mật khẩu');
             }
         } else {
-            return redirect()->back()->withInput()->with('error', ' email chưa tồn tại');
+            return redirect()->back()->withInput()->with('error', ' Email chưa tồn tại');
         }
     }
 
@@ -66,9 +66,9 @@ class AuthController extends Controller
             $profile->user_id = $user->id;
             $profile->save();
 
-            return redirect()->route('auth.login')->with('success', ' đăng kí thành công ');
+            return redirect()->route('auth.login')->with('success', ' Đăng kí thành công ');
         } catch (\Exception $e) {
-            return back()->with('error', 'đăng kí thất bạn' . $e->getMessage());
+            return back()->with('error', 'Đăng kí thất bạn' . $e->getMessage());
         }
     }
 

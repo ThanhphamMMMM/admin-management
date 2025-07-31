@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MyprofileController;
-use App\Http\Controllers\RolePermissionController;
 
 
 /*
@@ -25,23 +24,32 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/app', [AuthController::class, 'index'])->name('app');
+Route::get('/app', [AuthController::class, 'index'])->name('app')
+    ->middleware('check.role');
 
 //ROLE
-Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
-Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+Route::get('/roles', [RoleController::class, 'index'])->name('role.index')
+    ->middleware('check.name.role:role.index');
+Route::get('role/create', [RoleController::class, 'create'])->name('role.create')
+    ->middleware('check.permission.role:role.create');
 Route::post('role/store', [RoleController::class, 'store'])->name('role.store');
-Route::get('role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+Route::get('role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit')
+    ->middleware('check.name.role:role.edit');
 Route::post('role/update/{id}', [RoleController::class, 'update'])->name('role.update');
-Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy')
+    ->middleware('check.permission.role:role.destroy');
 
 //  USER
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
-Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/users', [UserController::class, 'index'])->name('user.index')
+    ->middleware('check.name.role:user.index');
+Route::get('user/create', [UserController::class, 'create'])->name('user.create')
+    ->middleware('check.permission.role:user.create');
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit')
+    ->middleware('check.permission:user.edit');
 Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
+Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy')
+    ->middleware('check.permission.role:user.delete');
 
 //AUTH
 Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
@@ -55,13 +63,12 @@ Route::post('/resetEmail', [ForgotPasswordController::class, 'sendResetLink'])->
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPassword'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPassword'])->name('password.update');
 
-// checkrole->redee
-Route::get('/redirect-by-role', function () {})->middleware('check.role')->name('redirect.by.role');
+// checkRole(admin)
+Route::get('/redirect-by-role', function () {
+    return redirect()->route('app');
+})->middleware('check.role')->name('redirect.by.role');
 
-// Myprofile
+// MyProfile
 Route::get('/my-profile', [MyprofileController::class, 'myProfile'])->name('myProfile');
 Route::post('/update-profile', [MyprofileController::class, 'Update'])->name('updateProfile');
 
-//Permission
-//Route::get('/roles/{role}/permissions', [RolePermissionController::class::class, 'permissions'])->name('roles.permissions');
-//Route::post('/roles/{role}/permissions', [RolePermissionController::class::class, 'addPermission'])->name('roles.addPermission');
