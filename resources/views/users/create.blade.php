@@ -102,6 +102,21 @@
                     </div>
                 </div>
 
+                {{--                    Gán quyền--}}
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Authority</label>
+                    <div class="col-md-10">
+                        @foreach($permissions as $permission)
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="permissions" value="{{ $permission->id }}">
+                                    {{ $permission->description }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
                 <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
             </div>
         </form>

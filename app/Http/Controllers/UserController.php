@@ -1,17 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\RedirectResponse;
-
 use Illuminate\Http\Request;
-
 use App\Models\Role;
-
 use App\Models\User;
-
+use App\Models\Permission;
 use App\Models\Profile;
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
@@ -28,7 +23,8 @@ class UserController extends Controller
     public function create(): View
     {
         $roles = Role::all();
-        return view('users.create', compact('roles'));
+        $permissions = Permission::all();
+        return view('users.create', compact('roles','permissions'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -42,6 +38,7 @@ class UserController extends Controller
             'address' => 'required',
             'date' => 'required',
             'role' => 'required|exists:roles,id',
+            'permission' => 'required|exists:permissions,id',
         ]);
 
         try {

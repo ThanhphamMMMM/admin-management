@@ -27,8 +27,8 @@
         <thead>
         <tr class="TableCustom">
             <th>STT</th>
-            <th>Name Role</th>
-            <th>Description</th>
+            <th>Tên vai trò</th>
+            <th>Mô tả về vai trò</th>
             <th>Thao tác</th>
         </tr>
         </thead>

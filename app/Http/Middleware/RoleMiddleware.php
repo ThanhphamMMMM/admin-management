@@ -28,7 +28,7 @@ class RoleMiddleware
         }
 
         if (in_array($user->role->name, $roleName)) {
-            abort(403, 'Bạn không có quyền truy cập đâsd');
+            abort(403, 'Bạn không có quyền truy cập ');
         }
 
         return $next($request);

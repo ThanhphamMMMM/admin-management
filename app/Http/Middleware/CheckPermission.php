@@ -23,7 +23,7 @@ class CheckPermission
             return redirect()->route('auth.login');
         }
 
-        $user->loadMissing('role','role.permissions');
+        $user->loadMissing('role.permissions');
 
         $userPermissions = $user->role->permissions->pluck('name')->toArray();
 
@@ -31,11 +31,9 @@ class CheckPermission
         foreach ($permissionNames as $permissionName) {
 
             if (in_array($permissionName, $userPermissions)) {
-                abort(403);
+                return $next($request);
             }
         }
-
-
-        return $next($request);
+        abort(403, 'Bạn không có quyền truy cập');
     }
 }
