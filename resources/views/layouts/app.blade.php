@@ -10,8 +10,8 @@
     <link rel="stylesheet" media="screen"
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
     <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/appds.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/indexth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @yield('style')
 </head>
 <!-- Body-->
@@ -71,10 +71,11 @@
                     @endphp
 
                     @php
-                        $user = Auth::user();
+                    $user = Auth::user();
+                        $userPermissions = $user?->role?->permissions->pluck('name')->toArray();
                     @endphp
 
-                    @if (in_array($user?->role?->name, ['admin', 'editor']))
+                    @if (in_array('role.index',$userPermissions))
                         <div class="menu-item">
                             <div class="menu-title text-left">
                                 <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai trò</a>
@@ -82,7 +83,7 @@
                         </div>
                     @endif
 
-                    @if (in_array($user?->role?->name, ['admin', 'editor']))
+                    @if (in_array('user.index',$userPermissions))
                         <div class="menu-item">
                             <div class="menu-title text-left">
                                 <a href="{{ route('user.index') }}">Quản lý nhân sự </a></div>
@@ -142,6 +143,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="{{ asset('theme/js/theme.min.js')}}"></script>
 @yield('js')
+
 </body>
 </html>
 

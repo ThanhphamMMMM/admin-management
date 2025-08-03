@@ -19,11 +19,14 @@ class PermissionMiddleware
         /** @var App\Models\User $user */
         $user = Auth::user();
         $user->loadMissing(['role']);
+
         if (!$user || !$user->role) {
+
             abort(403);
         }
 
-        if (!in_array($user->role->name, $roleName)) {
+        if (in_array($user->role->name, $roleName)) {
+
             abort(403);
         }
         return $next($request);

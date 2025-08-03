@@ -25,6 +25,7 @@ class CheckPermission
 
         $user->loadMissing('role.permissions');
 
+
         $userPermissions = $user->role->permissions->pluck('name')->toArray();
 
 

@@ -4,7 +4,7 @@
     quản lí role
 @endsection
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/indexth.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/index.css')}}">
 @endsection
 @section('content')
     <h3>Danh sách vai trò</h3>
@@ -29,24 +29,35 @@
             <th>STT</th>
             <th>Tên vai trò</th>
             <th>Mô tả về vai trò</th>
+            <th>Tính năng vai trò có thể truy cập</th>
             <th>Thao tác</th>
         </tr>
         </thead>
         @foreach($roles as $role)
             <tr>
-                <td class="text-center">{{ $role->id }}</td>
+                <td class="text-center">{{ $loop->iteration }}</td>
                 <td class="text-center">{{ $role->name }}</td>
                 <td class="text-center">{{ $role->description }}</td>
+                <td class="text-center-custom">
+                    @foreach($role->permissions as $permission)
+                        <span>
+                            {{$permission->description}}@if(!$loop->last)
+                                ,
+                            @endif
+                        </span>
+                    @endforeach
+                </td>
                 <td>
                     <div class="nav nav-custom">
-                        <div class="nav-delete">
-                            <a href="{{ route('role.edit',$role->id)}}">
-                                <button type="button" class="btn btn-primary m-2 btn-sm ">Sửa</button>
-                            </a>
-                        </div>
-
                         <div class="nav-update">
-                            @if(Auth::user()->role->permissions->contains('name', 'role.create'))
+                            @if(Auth::user()->role->permissions->contains('name', 'role.edit'))
+                                <a href="{{ route('role.edit',$role->id)}}">
+                                    <button type="button" class="btn btn-primary m-2 btn-sm ">Sửa</button>
+                                </a>
+                        </div>
+                        @endif
+                        <div class="nav-delete">
+                            @if(Auth::user()->role->permissions->contains('name', 'role.destroy'))
                                 <form action="{{ route('role.destroy', $role->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -64,7 +75,7 @@
             </tbody>
     </table>
     <div class="d-flex justify-content-start mt-4 ">
-        {{ $roles->links() }}
+        {{ $roles->links('pagination::bootstrap-4') }}
     </div>
 @endsection
 

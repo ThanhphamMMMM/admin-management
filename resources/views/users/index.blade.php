@@ -5,7 +5,7 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/indexth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
@@ -82,8 +82,8 @@
         @endforeach
         </tbody>
     </table>
-    <div class="d-flex justify-content-start mt-4 ">
-        {{ $users->links() }}
+    <div class="d-flex justify-content-start mt-4 link-custom ">
+        {{ $users->links('pagination::bootstrap-4') }}
     </div>
 @endsection
 

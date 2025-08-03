@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Permission;
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function index(): View
     {
 
-        $users = User::with(['profile', 'role'])->paginate(10);
+        $users = User::with(['profile', 'role'])->paginate(7);
         return view('users.index', compact('users'));
     }
 
@@ -24,22 +25,11 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $permissions = Permission::all();
-        return view('users.create', compact('roles','permissions'));
+        return view('users.create', compact('roles', 'permissions'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $request->validate([
-
-            'email' => 'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email',
-            'password' => 'required|min:7',
-            'fullname' => 'required',
-            'tel' => 'required|digits:10',
-            'address' => 'required',
-            'date' => 'required',
-            'role' => 'required|exists:roles,id',
-            'permission' => 'required|exists:permissions,id',
-        ]);
 
         try {
             $user = new User();
@@ -47,7 +37,6 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->role_id = $request->role;
             $user->save(); // Lưu trước để có ID
-
 
             $profile = new Profile();
             $profile->full_name = $request->fullname;
@@ -63,14 +52,14 @@ class UserController extends Controller
         }
     }
 
-    public function edit($id):View
+    public function edit($id): View
     {
         $user = User::with('profile')->findOrfail($id);
         $roles = Role::all();
         return view('users.edit', compact('user', 'roles'));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(StoreUserRequest $request, $id): RedirectResponse
     {
 
         $user = User::findOrfail($id);
@@ -108,7 +97,6 @@ class UserController extends Controller
             return redirect()->back()->route('user.edit')->with('error', 'Cập nhật tài khoản thất bại');
         }
     }
-
 
     public function destroy($id): RedirectResponse
     {

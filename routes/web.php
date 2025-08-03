@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 Route::get('/app', [AuthController::class, 'index'])->name('app')
-    ->middleware('check.role');
+    ->middleware('check.login');
 
 //ROLE
 Route::get('/roles', [RoleController::class, 'index'])->name('role.index')
@@ -49,7 +49,7 @@ Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit')
     ->middleware('check.permission.role:user.edit');
 Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy')
-    ->middleware('check.permission.role:user.delete');
+    ->middleware('check.permission.role:user.destroy');
 
 //AUTH
 Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
@@ -66,7 +66,7 @@ Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPasswo
 // checkRole(admin)
 Route::get('/redirect-by-role', function () {
     return redirect()->route('app');
-})->middleware('check.role')->name('redirect.by.role');
+})->middleware('check.login')->name('redirect.by.role');
 
 // MyProfile
 Route::get('/my-profile', [MyprofileController::class, 'myProfile'])->name('myProfile');

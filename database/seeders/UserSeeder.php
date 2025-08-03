@@ -13,7 +13,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->delete();
 //        DB::table('users')->insert([
 //            'email' => 'admin@example.com',
 //            'password' => Hash::make('123456789'),

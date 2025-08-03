@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRoleRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Role;
@@ -12,7 +13,8 @@ class RoleController extends Controller
 
     public function index(): View
     {
-        $roles = Role::paginate(10);
+        $roles = Role::with('permissions')->paginate(7);
+
         return view('roles.index', compact('roles'));
     }
 
@@ -22,19 +24,15 @@ class RoleController extends Controller
         return view('roles.create', compact('permissions'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreRoleRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|unique:roles',
-            'description' => 'required',
-            'permissions' => 'required'
-        ]);
-
         try {
             $role = new Role();
             $role->name = $request->name;
             $role->description = $request->description;
             $role->save();
+
+            $role->permissions()->sync($request->permissions);
 
             return redirect()->route('role.index')->with('success', 'Thêm vai trò thành công');
         } catch (\Exception $e) {
@@ -44,8 +42,13 @@ class RoleController extends Controller
 
     public function edit($id): View
     {
-        $role = Role::findOrFail($id);
-        return view('roles.edit', compact('role'));
+        $role = Role::with('permissions')->findOrFail($id);
+
+        $allPermissions = Permission::all();
+
+        $rolePermissionsIds = $role->permissions->pluck('id')->toArray();
+
+        return view('roles.edit', compact('role','allPermissions', 'rolePermissionsIds'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -55,12 +58,16 @@ class RoleController extends Controller
 
             'name' => 'required|unique:roles,name,' . $id,
             'description' => 'required',
+            'permissions' => 'array',
         ]);
 
         try {
             $role->name = $request->name;
             $role->description = $request->description;
             $role->save();
+
+            $permission = $request->input('permissions',[]);
+            $role->permissions()->sync($permission);
 
             return redirect()->route('role.index')->with('success', 'Sửa vai trò thành công');
         } catch (\Exception $e) {

@@ -15,7 +15,7 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             ['name' => 'admin', 'description' => 'Quản trị hệ thống'],
             ['name' => 'editor', 'description' => 'Biên tập nội dung'],
-            ['name' => 'monitor', 'description' => 'Giám sát nội dung'],
+            ['name' => 'manage', 'description' => 'Quản lí app'],
             ['name' => 'check', 'description' => 'Kiểm tra dự án'],
             ['name' => 'user', 'description' => 'Người dùng thông thường'],
 

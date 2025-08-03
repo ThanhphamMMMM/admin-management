@@ -5,6 +5,7 @@
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/create.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/notification.css') }}">
 @endsection
 @section('title')
     quản lí user
@@ -23,7 +24,7 @@
                         <input class="form-control" type="text" id="fullname" value="{{ old('fullname')}}"
                                placeholder="Nhập họ và tên " name="fullname" required>
                         @error('fullname')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -34,7 +35,7 @@
                         <input class="form-control" type="text" id="tel" value="{{ old('tel')}}"
                                placeholder="Nhập số điện thoại " name="tel" required>
                         @error('tel')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                         <input class="form-control" type="text" id="address" value="{{ old('address')}}"
                                placeholder="Nhập địa chỉ " name="address" required>
                         @error('address')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -56,7 +57,7 @@
                         <input class="form-control" type="date" id="date" value="{{ old('date')}}"
                                placeholder="Nhập địa chỉ " name="date" required>
                         @error('date')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         <input class="form-control" type="email" id="email" name="email" value="{{ old('email')}}"
                                placeholder="Nhập email :(...@gmail.com) " required>
                         @error('email')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                         <input class="form-control" type="password" id="password" name="password">
                     </div>
                     @error('password')
-                    <div style="color:red;">{{ $message }}</div>
+                    <div>{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -92,30 +93,16 @@
                             <option value="">-- Chọn vai trò --</option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role->id }}" {{ old('role') == $role->id ? 'selected' : '' }}>
-                                    {{ $role->id }} - {{ $role->name }}
+                                   {{ $role->name }}
                                 </option>
                             @endforeach
                         </select>
                         @error('role')
-                        <div style="color:red;">{{ $message }}</div>
+                        <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
-                {{--                    Gán quyền--}}
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Authority</label>
-                    <div class="col-md-10">
-                        @foreach($permissions as $permission)
-                            <div>
-                                <label>
-                                    <input type="checkbox" name="permissions" value="{{ $permission->id }}">
-                                    {{ $permission->description }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
 
                 <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
             </div>

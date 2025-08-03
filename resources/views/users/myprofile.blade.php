@@ -4,7 +4,7 @@
     my-profile
 @endsection
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/myprofilepa.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/myprofile.css')}}">
 @endsection
 
 @section('content')

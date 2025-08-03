@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Schema;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         /** @var \App\Models\User $user */
         if ($user = Auth::user()) {
             $user->loadMissing('role.permissions');
-            Paginator::useBootstrapFive();
+            Paginator::useBootstrap();
 
             if (Schema::hasTable('permissions')) {
                 foreach (Permission::with('roles')->get() as $permission) {

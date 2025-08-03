@@ -22,7 +22,7 @@ class PermissionSeeder extends Seeder
 
             ['name' => 'role.index', 'description' => 'Xem danh sách vai trò'],
             ['name' => 'role.create', 'description' => 'Tạo vai trò'],
-            ['name' => 'role.edit', 'description' => 'Xoá vai trò'],
+            ['name' => 'role.edit', 'description' => 'Chỉnh sửa vai trò'],
             ['name' => 'role.destroy', 'description' => 'Xoá vai trò'],
         ]);
     }

@@ -30,7 +30,20 @@
                                   placeholder="Mô tả chung về vai trò cần cần tạo "></textarea>
                     </div>
                 </div>
-
+                {{--                    Gán quyền--}}
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Authority</label>
+                    <div class="col-md-10">
+                        @foreach($permissions as $permission)
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                    {{ $permission->description }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-outline-primary"> Thực hiện</button>
             </div>
