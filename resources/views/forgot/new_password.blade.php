@@ -59,8 +59,8 @@
                 <span class="sr-only">Show password</span>
             </label>
         </div>
-        <a href="#" class="btn btn-secondary ms-2">Cancel</a>
-        <button type="submit" class="btn btn-primary">Update</button>
+
+        <button type="submit" class="btn btn-primary w-100">Update</button>
     </form>
 @endsection
 

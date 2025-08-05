@@ -6,6 +6,7 @@
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/edit.css')}}">
+<link rel="stylesheet" href="{{ asset('css/notification.css')}}">
 @endsection
 
 
@@ -20,7 +21,7 @@
             <input type="email" id="email" name="email" value="{{ old('email',$user->email)}}"
                    placeholder="Nhập họ và tên " required>
             @error('email')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 
@@ -28,7 +29,7 @@
             <label for="password">Password :</label>
             <input type="password" id="password" name="password" placeholder="Nhập mật khẩu(ít nhất 7 kí tự)" >
             @error('password')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 
@@ -38,7 +39,7 @@
             <input type="text" id="fullname" name="fullname" value="{{ old('fullname',$user->profile->full_name)}}"
                    placeholder="Nhập họ và tên " required>
             @error('fullname')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 
@@ -48,7 +49,7 @@
             <input type="tel" id="tel" name="tel" value="{{ old('tel',$user->profile->phone)}}"
                    placeholder="Nhập số điện thoại " required>
             @error('tel')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 
@@ -57,7 +58,7 @@
             <input type="text" id="address" name="address" value="{{ old('address', $user->profile->address) }}"
                    placeholder="Nhập địa chỉ " required>
             @error('address')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 
@@ -66,7 +67,7 @@
             <label for="date">Birthday :</label>
             <input type="date" id="date" name="date" value="{{ old('date', $user->profile->birthday)}}" required>
             @error('date')
-            <div style="color:red;">{{ $message }}</div>
+            <div>{{ $message }}</div>
             @enderror
         </div>
 

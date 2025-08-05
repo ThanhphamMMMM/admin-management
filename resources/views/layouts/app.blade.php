@@ -32,7 +32,7 @@
                         </a>
                         <ul class="dropdown-avata">
                             <li><a class="dropdown-tt" href="{{ route('myProfile') }}">Thông Tin</a></li>
-                            <li><a class="dropdown-dx" href="{{ route('auth.login') }}">Đăng Xuất</a></li>
+                            <li><a class="dropdown-dx" href="{{ route('login') }}">Đăng Xuất</a></li>
                         </ul>
                     </div>
                 </ul>
@@ -65,25 +65,23 @@
                             <a href="{{ route('app') }}">Trang chủ</a>
                         </div>
                     </div>
+
                     @php
                         use Illuminate\Support\Facades\Auth;
-
+                            $user = Auth::user();
+                                $userPermissions = $user?->role?->permissions->pluck('name')->toArray();
                     @endphp
 
-                    @php
-                    $user = Auth::user();
-                        $userPermissions = $user?->role?->permissions->pluck('name')->toArray();
-                    @endphp
-
-                    @if (in_array('role.index',$userPermissions))
+                    @if (in_array('role.index',$userPermissions ?? []))
                         <div class="menu-item">
                             <div class="menu-title text-left">
-                                <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai trò</a>
+                                <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai
+                                    trò</a>
                             </div>
                         </div>
                     @endif
 
-                    @if (in_array('user.index',$userPermissions))
+                    @if (in_array('user.index',$userPermissions ?? []))
                         <div class="menu-item">
                             <div class="menu-title text-left">
                                 <a href="{{ route('user.index') }}">Quản lý nhân sự </a></div>
@@ -127,7 +125,7 @@
                     <script src="{{ asset('theme/vendor/jquery/dist/jquery.slim.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
                     <script
-                        src="{{ asset('theme/vendor/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}"></script>
+                            src="{{ asset('theme/vendor/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/simplebar/dist/simplebar.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-core.min.js')}}"></script>
@@ -137,9 +135,9 @@
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-pug.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.min.js')}}"></script>
                     <script
-                        src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
+                            src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
                     <script
-                        src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
+                            src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="{{ asset('theme/js/theme.min.js')}}"></script>
 @yield('js')

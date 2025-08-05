@@ -68,7 +68,7 @@
         </div>
         <button class="btn btn-primary btn-block" type="submit">Register</button>
         <p class="font-size-sm pt-3 mb-0">Already have an account?
-            <a href=" {{ route('auth.login') }}" >Log in</a>
+            <a href=" {{ route('login') }}" >Log in</a>
         </p>
 @endsection
 @section('js')

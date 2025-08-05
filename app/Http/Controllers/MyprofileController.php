@@ -13,7 +13,7 @@ class MyprofileController extends Controller
     public function myProfile():View|RedirectResponse
     {
         if (!$user = Auth::user()) {
-            return redirect()->route('auth.login');
+            return redirect()->route('login');
         }
         $user->load(['profile', 'role']);
         return view('users.myProfile', compact('user'));
@@ -44,7 +44,7 @@ class MyprofileController extends Controller
                 $role->save();
             }
 
-            /** @var \App\Models\Profile $profile */
+            /** @var \App\Models\User $User */
             $profile =$user->profile;
             if($profile) {
                 $profile->full_name = $request->input('full_name');
@@ -53,7 +53,6 @@ class MyprofileController extends Controller
                 $profile->birthday = $request->input('birthday');
                 $profile->save();
             }
-
 
             return back()->with('success','Cập nhật thành công');
         }catch (\Exception $exception){

@@ -24,37 +24,33 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/app', [AuthController::class, 'index'])->name('app')
-    ->middleware('check.login');
+Route::middleware('auth')->group(function () {
+    Route::get('/app', [AuthController::class, 'index'])->name('app');
+    Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+});
 
-//ROLE
-Route::get('/roles', [RoleController::class, 'index'])->name('role.index')
-    ->middleware('check.name.role:role.index');
-Route::get('role/create', [RoleController::class, 'create'])->name('role.create')
-    ->middleware('check.permission.role:role.create');
+Route::middleware('check.permission.role')->group(function () {
+    Route::get('/roles', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+    Route::get('role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
+    Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+    Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy');
+});
+//method-post roles
 Route::post('role/store', [RoleController::class, 'store'])->name('role.store');
-Route::get('role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit')
-    ->middleware('check.permission.role:role.edit');
 Route::post('role/update/{id}', [RoleController::class, 'update'])->name('role.update');
-Route::delete('/destroy/{id}', [RoleController::class, 'destroy'])->name('role.destroy')
-    ->middleware('check.permission.role:role.destroy');
-
-//  USER
-Route::get('/users', [UserController::class, 'index'])->name('user.index')
-    ->middleware('check.name.role:user.index');
-Route::get('user/create', [UserController::class, 'create'])->name('user.create')
-    ->middleware('check.permission.role:user.create');
+//method-post user
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
-Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit')
-    ->middleware('check.permission.role:user.edit');
 Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::delete('/destroy{id}', [UserController::class, 'destroy'])->name('user.destroy')
-    ->middleware('check.permission.role:user.destroy');
 
 //AUTH
-Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/checkLogin', [AuthController::class, 'checkLogin'])->name('auth.checkLogin');
-Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.reGisTer');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/process', [AuthController::class, 'process'])->name('auth.process');
 
 //FORGOT PASSWORD
@@ -62,11 +58,6 @@ Route::get('/resetEmail', [ForgotPasswordController::class, 'showForm'])->name('
 Route::post('/resetEmail', [ForgotPasswordController::class, 'sendResetLink'])->name('reset.email');
 Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'newPassword'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'storeNewPassword'])->name('password.update');
-
-// checkRole(admin)
-Route::get('/redirect-by-role', function () {
-    return redirect()->route('app');
-})->middleware('check.login')->name('redirect.by.role');
 
 // MyProfile
 Route::get('/my-profile', [MyprofileController::class, 'myProfile'])->name('myProfile');

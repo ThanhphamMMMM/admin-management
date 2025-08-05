@@ -28,8 +28,8 @@ class RoleController extends Controller
     {
         try {
             $role = new Role();
-            $role->name = $request->name;
-            $role->description = $request->description;
+            $role->name = $request->input('name');
+            $role->description = $request->input('description');
             $role->save();
 
             $role->permissions()->sync($request->permissions);
@@ -62,8 +62,8 @@ class RoleController extends Controller
         ]);
 
         try {
-            $role->name = $request->name;
-            $role->description = $request->description;
+            $role->name = $request->input('name');
+            $role->description = $request->input('description');
             $role->save();
 
             $permission = $request->input('permissions',[]);

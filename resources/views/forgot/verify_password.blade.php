@@ -24,8 +24,7 @@
             <input class="form-control prepended-form-control" type="email" placeholder="Email" id="email" name="email"
                    value="{{ old('email')}}" required>
         </div>
-        <a href="{{ route('auth.login') }}" class="btn btn-secondary ms-2"> Cancel</a>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>
 @endsection
 

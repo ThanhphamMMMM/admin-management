@@ -4,7 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\PermissionMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use App\Http\Middleware\RedirectByRole;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\CheckPermission;
 
@@ -34,6 +34,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -57,9 +58,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'check.login' => RedirectByRole::class,
-        'check.name.role' => RoleMiddleware::class,
+        'auth' => Authenticate::class,
         'check.permission.role' => CheckPermission::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

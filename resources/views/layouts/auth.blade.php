@@ -15,7 +15,7 @@
       </div>
       <section class="container d-flex align-items-center pt-7 pb-3 pb-md-4" >
         <div class="w-100 pt-3">
-          <div class="row ">
+          <div class="row mb-5 ">
             <div class="col-lg-4 col-md-6 offset-lg-1">
               <!-- view form-->
               <div class="cs-view show" id="signin-view">

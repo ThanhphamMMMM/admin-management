@@ -33,20 +33,20 @@ class UserController extends Controller
 
         try {
             $user = new User();
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->role_id = $request->role;
+            $user->email = $request->input('email');
+            $user->password = Hash::make($request->input('password'));
+            $user->role_id = $request->input('role');
             $user->save(); // Lưu trước để có ID
 
             $profile = new Profile();
-            $profile->full_name = $request->fullname;
-            $profile->phone = $request->tel;
-            $profile->address = $request->address;
-            $profile->birthday = $request->date;
+            $profile->full_name = $request->input('fullname');
+            $profile->phone = $request->input('phone');
+            $profile->address = $request->input('address');
+            $profile->birthday = $request->input('birthday');
             $profile->user_id = $user->id; // Gắn khoá ngoại
             $profile->save();
 
-            return redirect()->route('user.index')->with('success', 'Thêm tài khoản thành công!');
+            return redirect()->route('user.index')->with('success', 'Tạo tài khoản thành công!');
         } catch (\Exception  $e) {
             return back()->with('error', 'Thêm tài khoản thất bại' . $e->getMessage());
         }
@@ -65,7 +65,7 @@ class UserController extends Controller
         $user = User::findOrfail($id);
         $request->validate([
 
-            'email' => 'required|email|email', $id,   // kiểm tra email trong bảng users đã tồn tại chưa
+            'email' => 'required|email|email'. $id,   // kiểm tra email trong bảng users đã tồn tại chưa
             'password' => 'nullable|min:7',
             'fullname' => 'required',
             'tel' => 'required|max:10',
@@ -76,19 +76,19 @@ class UserController extends Controller
         ]);
 
         try {
-            $user->email = $request->email;
-            $user->role_id = $request->role;
+            $user->email = $request->input('email');
+            $user->role_id = $request->input('role');
 
             if ($request->filled('password')) {
-                $user->password = Hash::make($request->password);
+                $user->password = Hash::make($request->input('password'));
             }
             $user->save();
 
             $profile = $user->profile;
-            $profile->full_name = $request->fullname;
-            $profile->phone = $request->tel;
-            $profile->address = $request->address;
-            $profile->birthday = $request->date;
+            $profile->full_name = $request->input('fullname');
+            $profile->phone = $request->input('tel');
+            $profile->address = $request->input('address');
+            $profile->birthday = $request->input('date');
             $profile->user_id = $user->id; // Gắn khoá ngoại
             $profile->save();
 
@@ -105,7 +105,6 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', 'XoÁ tài khoản thành công!');
     }
-
 
 }
 

@@ -40,7 +40,7 @@
 
         <button class="btn btn-primary btn-block" type="submit">Log in</button>
         <p class="font-size-sm pt-3 mb-0">Don't have an account?
-            <a class='font-weight-medium' data-view='#signup-view' href='{{ route('auth.reGisTer')}}'>Register</a>
+            <a class='font-weight-medium' data-view='#signup-view' href='{{ route('register')}}'>Register</a>
 
         </p>
     </form>

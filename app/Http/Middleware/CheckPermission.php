@@ -15,26 +15,24 @@ class CheckPermission
      *
      * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
-    public function handle(Request $request, Closure $next, ...$permissionNames): Response
+    public function handle(Request $request, Closure $next): Response
     {
         /** @var \App\Models\User $user */
         $user = Auth::user();
-        if (!$user) {
-            return redirect()->route('auth.login');
+
+        if (!$user || !$user->role) {
+            abort(403,'Bạn không có quyền truy cập');
         }
 
         $user->loadMissing('role.permissions');
 
-
         $userPermissions = $user->role->permissions->pluck('name')->toArray();
 
-
-        foreach ($permissionNames as $permissionName) {
-
-            if (in_array($permissionName, $userPermissions)) {
-                return $next($request);
-            }
+        $currentRoute = $request->route()->getName();
+        if (!in_array($currentRoute, $userPermissions)) {
+            abort(403, 'Bạn không có quyền truy cập');
         }
-        abort(403, 'Bạn không có quyền truy cập');
+
+        return $next($request);
     }
 }
