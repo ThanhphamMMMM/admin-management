@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -46,6 +47,14 @@ Route::post('role/update/{id}', [RoleController::class, 'update'])->name('role.u
 //method-post user
 Route::post('user/store', [UserController::class, 'store'])->name('user.store');
 Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
+
+//Permissions
+Route::get('/permissions', [PermissionController::class, 'index'])->name('permission.index');
+Route::get('permissions/create', [PermissionController::class, 'create'])->name('permission.create');
+Route::post('permissions/store', [PermissionController::class, 'store'])->name('permission.store');
+Route::get('permissions/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
+Route::post('permissions/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
+Route::get('permissions/destroy/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
 
 //AUTH
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

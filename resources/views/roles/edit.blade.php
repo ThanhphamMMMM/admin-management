@@ -29,7 +29,8 @@
                     <label class="col-md-2 col-form-label font-weight-medium" for="description">Description</label>
                     <div class="col-md-10">
                         <textarea class="form-control" id="description" name="description" rows="5"
-                                  placeholder="Mô tả chung về vai trò cần cần tạo "> {{ old('description',$role->description)}}</textarea>
+                                  placeholder="Mô tả chung về vai trò cần cần tạo ">
+                                {{ old('description',$role->description)}}</textarea>
                     </div>
                 </div>
 

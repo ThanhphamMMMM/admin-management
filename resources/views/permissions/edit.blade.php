@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Quản lí user
+    Sửa Quyền
 @endsection
 
 @section('style')
@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-    <h3>Thêm mới vai trò</h3>
+    <h3>Sửa Quyền</h3>
     <div class="card-body">
-        <form action="{{ route('role.store') }}" method="POST">
+        <form action="{{ route('permission.update',$permissions->id) }}" method="POST">
             @csrf
             {{--            Nhập tên role--}}
             <div class="tab-content">
@@ -19,6 +19,7 @@
                     <label class="col-md-2 col-form-label font-weight-medium" for="name">Name</label>
                     <div class="col-md-10">
                         <input class="form-control" type="text" id="name" name="name"
+                               value="{{ old('name',$permissions->name) }}"
                                placeholder="Nhập vai trò cần cần tạo " required>
                     </div>
                 </div>
@@ -27,21 +28,9 @@
                     <label class="col-md-2 col-form-label font-weight-medium" for="description">Description</label>
                     <div class="col-md-10">
                         <textarea class="form-control" id="description" name="description" rows="5"
-                                  placeholder="Mô tả chung về vai trò cần cần tạo "></textarea>
-                    </div>
-                </div>
-                {{--                    Gán quyền--}}
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="description">Authority</label>
-                    <div class="col-md-10">
-                        @foreach($roles as $role)
-                            <div>
-                                <label>
-                                    <input type="checkbox" name="permissions[]" value="{{ $role->id }}">
-                                    {{ $role->description }}
-                                </label>
-                            </div>
-                        @endforeach
+                                  placeholder="Mô tả chung về vai trò cần cần tạo ">
+                                    {{ old('description',$permissions->description)}}
+                        </textarea>
                     </div>
                 </div>
 

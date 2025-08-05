@@ -66,6 +66,15 @@
                         </div>
                     </div>
 
+                    @if(Auth::check() && Auth::user()->role->name === 'admin' )
+                        <div class="menu-item text-left">
+                            <div class="menu-title">
+                                <a href="{{ route('permission.index') }}">Quản lý quyền</a>
+                            </div>
+                        </div>
+
+                    @endif
+
                     @php
                         use Illuminate\Support\Facades\Auth;
                             $user = Auth::user();
@@ -85,6 +94,13 @@
                         <div class="menu-item">
                             <div class="menu-title text-left">
                                 <a href="{{ route('user.index') }}">Quản lý nhân sự </a></div>
+                        </div>
+                    @endif
+
+                    @if (in_array('permission.index',$userPermissions ?? []))
+                        <div class="menu-item">
+                            <div class="menu-title text-left">
+                                <a href="{{ route('permissions.index') }}">Quản lý quyền</a></div>
                         </div>
                     @endif
 
@@ -125,7 +141,7 @@
                     <script src="{{ asset('theme/vendor/jquery/dist/jquery.slim.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
                     <script
-                            src="{{ asset('theme/vendor/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}"></script>
+                        src="{{ asset('theme/vendor/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/simplebar/dist/simplebar.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-core.min.js')}}"></script>
@@ -135,9 +151,9 @@
                     <script src="{{ asset('theme/vendor/prismjs/components/prism-pug.min.js')}}"></script>
                     <script src="{{ asset('theme/vendor/prismjs/plugins/toolbar/prism-toolbar.min.js')}}"></script>
                     <script
-                            src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
+                        src="{{ asset('theme/vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js')}}"></script>
                     <script
-                            src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
+                        src="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js')}}"></script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="{{ asset('theme/js/theme.min.js')}}"></script>
 @yield('js')
