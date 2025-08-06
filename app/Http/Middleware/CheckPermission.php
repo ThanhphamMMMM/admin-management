@@ -20,13 +20,13 @@ class CheckPermission
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
-        if (!$user || !$user->role) {
+        if (!$user || !$user->role()->first()) {
             abort(403,'Bạn không có quyền truy cập');
         }
 
         $user->loadMissing('role.permissions');
 
-        $userPermissions = $user->role->permissions->pluck('name')->toArray();
+        $userPermissions = $user->role()->first()->permissions->pluck('name')->toArray();
 
         $currentRoute = $request->route()->getName();
         if (!in_array($currentRoute, $userPermissions)) {

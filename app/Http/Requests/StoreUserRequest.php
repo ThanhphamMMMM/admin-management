@@ -24,10 +24,10 @@ class StoreUserRequest extends FormRequest
         return [
             'email' => 'required|email|regex:/^[\w\.\-]+@gmail\.com$/i|unique:users,email',
             'password' => 'required|min:7',
-            'fullname' => 'required',
-            'tel' => 'required|digits:10',
+            'full_name' => 'required',
+            'phone' => 'required|digits:10',
             'address' => 'required',
-            'date' => 'required',
+            'birthday' => 'required',
             'role' => 'required|exists:roles,id',
 
 

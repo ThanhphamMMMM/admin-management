@@ -20,8 +20,8 @@ class RoleController extends Controller
 
     public function create(): View
     {
-        $permissions = Permission::all();
-        return view('roles.create', compact('permissions'));
+        $roles = Permission::all();
+        return view('roles.create', compact('roles'));
     }
 
     public function store(StoreRoleRequest $request): RedirectResponse
@@ -34,9 +34,9 @@ class RoleController extends Controller
 
             $role->permissions()->sync($request->permissions);
 
-            return redirect()->route('role.index')->with('success', 'Thêm vai trò thành công');
+            return redirect()->route('role.index')->with('success', 'Thêm Vai Trò Thành Công...');
         } catch (\Exception $e) {
-            return back()->with('error', 'Thêm vai trò thất bại' . $e->getMessage());
+            return back()->with('error', 'Thêm Vai Trò Không Thành Công!' . $e->getMessage());
         }
     }
 
@@ -69,9 +69,9 @@ class RoleController extends Controller
             $permission = $request->input('permissions',[]);
             $role->permissions()->sync($permission);
 
-            return redirect()->route('role.index')->with('success', 'Sửa vai trò thành công');
+            return redirect()->route('role.index')->with('success', 'Sửa Vai Trò Thành Công...');
         } catch (\Exception $e) {
-            return back()->with('error', 'Sửa vai trò thất bại' . $e->getMessage());
+            return back()->with('error', 'Sửa Vai Trò Không Thành Công!' . $e->getMessage());
         }
 
 
@@ -84,7 +84,7 @@ class RoleController extends Controller
 
         $role->delete();
 
-        return redirect()->route('role.index')->with('success', 'Xoá vai trò thành công');
+        return redirect()->route('role.index')->with('success', 'Xoá Vai Trò Thành Công...');
     }
 
 

@@ -13,8 +13,8 @@
             <div class="avatar-wrapper ">
                 <img id="avatarPreview" src="{{ asset('images/myprofile.png') }}" alt="Avatar">
                 <br>
-                <button class="button-custom ml-4" onclick="document.getElementById('avatarInput').click()">Thay đổi
-                    ảnh
+                <button class="button-custom ml-4"
+                        onclick="document.getElementById('avatarInput').click()">Thay Đổi Ảnh
                 </button>
                 <input type="file" id="avatarInput" accept="image/*" class="file-custom">
             </div>
@@ -45,7 +45,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="full_name">Họ và Tên</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="text" id="full_name" name="full_name"
-                                       value="{{ $user->profile->full_name }}" required>
+                                       value="{{ $user->profile->full_name ?? '' }}" required>
                             </div>
                         </div>
 
@@ -53,7 +53,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="email">Email</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="email" id="email" name="email"
-                                       value="{{ $user->email }}" required>
+                                       value="{{ $user->email ?? '' }}" required>
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="phone">Số điện thoại</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="text" id="phone" name="phone"
-                                       value="{{ $user->profile->phone }}" required>
+                                       value="{{ $user->profile->phone ?? '' }}" required>
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="address">Địa chỉ</label>
                             <div class="col-md-10">
                                 <textarea class="form-control" id="address" name="address"
-                                          rows="5">{{ $user->profile->address }}</textarea>
+                                          rows="5">{{ $user->profile->address ?? '' }}</textarea>
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="birthday">Ngày sinh</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="date" id="birthday" name="birthday"
-                                       value="{{ old('date', $user->profile->birthday)}}" required>
+                                       value="{{ old('date', $user->profile->birthday ?? '')}}" required>
                             </div>
                         </div>
 
@@ -85,7 +85,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="name">Vai trò</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="text" id="name" name="name"
-                                       value="{{ $user->role->name }}">
+                                       value="{{ $user->role->name ?? '' }}">
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             <label class="col-md-2 col-form-label font-weight-medium" for="descride">Mô tả</label>
                             <div class="col-md-10">
                                 <input class="form-control" type="text" id="description" name="description"
-                                       value="{{ $user->role->description }}">
+                                       value="{{ $user->role->description ?? '' }}">
                             </div>
                         </div>
 

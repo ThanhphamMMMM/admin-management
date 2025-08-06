@@ -19,22 +19,22 @@
             <div class="tab-content">
 
                 <div class="form-group row align-items-center">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="fullname">Full Name</label>
+                    <label class="col-md-2 col-form-label font-weight-medium" for="full_name">Full Name</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="text" id="fullname" value="{{ old('fullname')}}"
-                               placeholder="Nhập họ và tên " name="fullname" required>
-                        @error('fullname')
+                        <input class="form-control" type="text" id="full_name" value="{{ old('full_name') }}"
+                               placeholder="Nhập họ và tên " name="full_name" required>
+                        @error('full_name')
                         <div>{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
 
                 <div class="form-group row align-items-center">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="tel">Phone</label>
+                    <label class="col-md-2 col-form-label font-weight-medium" for="phone">Phone</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="text" id="tel" value="{{ old('tel')}}"
-                               placeholder="Nhập số điện thoại " name="tel" required>
-                        @error('tel')
+                        <input class="form-control" type="text" id="phone" value="{{ old('phone') }}"
+                               placeholder="Nhập số điện thoại " name="phone" required>
+                        @error('phone')
                         <div>{{ $message }}</div>
                         @enderror
                     </div>
@@ -43,7 +43,7 @@
                 <div class="form-group row align-items-center">
                     <label class="col-md-2 col-form-label font-weight-medium" for="address">Address</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="text" id="address" value="{{ old('address')}}"
+                        <input class="form-control" type="text" id="address" value="{{ old('address') }}"
                                placeholder="Nhập địa chỉ " name="address" required>
                         @error('address')
                         <div>{{ $message }}</div>
@@ -52,11 +52,11 @@
                 </div>
 
                 <div class="form-group row align-items-center">
-                    <label class="col-md-2 col-form-label font-weight-medium" for="date">Brithday</label>
+                    <label class="col-md-2 col-form-label font-weight-medium" for="birthday">Brithday</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="date" id="date" value="{{ old('date')}}"
-                               placeholder="Nhập địa chỉ " name="date" required>
-                        @error('date')
+                        <input class="form-control" type="date" id="birthday" value="{{ old('birthday') }}"
+                               placeholder="Nhập địa chỉ " name="birthday" required>
+                        @error('birthday')
                         <div>{{ $message }}</div>
                         @enderror
                     </div>
@@ -65,7 +65,7 @@
                 <div class="form-group row align-items-center">
                     <label class="col-md-2 col-form-label font-weight-medium" for="email">Email</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="email" id="email" name="email" value="{{ old('email')}}"
+                        <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
                                placeholder="Nhập email :(...@gmail.com) " required>
                         @error('email')
                         <div>{{ $message }}</div>
@@ -90,7 +90,7 @@
                     <label class="col-md-2 col-form-label font-weight-medium" for="role">Roles</label>
                     <div class="col-md-10">
                         <select class="form-control custom-select" name="role" id="role">
-                            <option value="">-- Chọn vai trò --</option>
+                            <option>-- Chọn vai trò --</option>
                             @foreach ($roles as $role)
                                 <option value="{{ $role->id }}" {{ old('role') == $role->id ? 'selected' : '' }}>
                                    {{ $role->name }}
@@ -104,7 +104,7 @@
                 </div>
 
 
-                <button class="btn btn-outline-primary" type="submit">Thực HIỆN</button>
+                <button class="btn btn-outline-primary" type="submit">Thực Hiện</button>
             </div>
         </form>
     </div>

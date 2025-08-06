@@ -35,20 +35,20 @@
 
 
         <div class="item">
-            <label for="fullname">Full name :</label>
-            <input type="text" id="fullname" name="fullname" value="{{ old('fullname',$user->profile->full_name)}}"
+            <label for="full_name">Full name :</label>
+            <input type="text" id="full_name" name="full_name" value="{{ old('full_name',$user->profile->full_name)}}"
                    placeholder="Nhập họ và tên " required>
-            @error('fullname')
+            @error('full_name')
             <div>{{ $message }}</div>
             @enderror
         </div>
 
 
         <div class="item">
-            <label for="tel">Phone :</label>
-            <input type="tel" id="tel" name="tel" value="{{ old('tel',$user->profile->phone)}}"
+            <label for="phone">Phone :</label>
+            <input type="tel" id="phone" name="phone" value="{{ old('phone',$user->profile->phone)}}"
                    placeholder="Nhập số điện thoại " required>
-            @error('tel')
+            @error('phone')
             <div>{{ $message }}</div>
             @enderror
         </div>
@@ -64,9 +64,9 @@
 
 
         <div class="item">
-            <label for="date">Birthday :</label>
-            <input type="date" id="date" name="date" value="{{ old('date', $user->profile->birthday)}}" required>
-            @error('date')
+            <label for="birthday">Birthday :</label>
+            <input type="date" id="birthday" name="birthday" value="{{ old('birthday', $user->profile->birthday)}}" required>
+            @error('birthday')
             <div>{{ $message }}</div>
             @enderror
         </div>
@@ -83,7 +83,7 @@
             </select>
         </div>
 
-        <button type="submit">THỰC HIỆN</button>
+        <button type="submit">Thực Hiện</button>
     </form>
 </div>
 @endsection

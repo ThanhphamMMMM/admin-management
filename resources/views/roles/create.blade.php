@@ -18,7 +18,7 @@
                 <div class="form-group row align-items-center">
                     <label class="col-md-2 col-form-label font-weight-medium" for="name">Name</label>
                     <div class="col-md-10">
-                        <input class="form-control" type="text" id="name" name="name"
+                        <input class="form-control" type="text" id="name" name="name" value="{{ old('name') }}"
                                placeholder="Nhập vai trò cần cần tạo " required>
                     </div>
                 </div>

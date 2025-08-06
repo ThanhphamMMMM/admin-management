@@ -27,10 +27,10 @@
         <thead>
         <tr class="TableCustom">
             <th>STT</th>
-            <th>Tên vai trò</th>
-            <th>Mô tả về vai trò</th>
-            <th>Tính năng vai trò có thể truy cập</th>
-            <th>Thao tác</th>
+            <th>Tên Vai Trò</th>
+            <th>Mô Tả Về Vai Trò</th>
+            <th>Tính Năng Vai Trò Có Thể Truy Cập</th>
+            <th>Thao Tác</th>
         </tr>
         </thead>
         @foreach($roles as $role)

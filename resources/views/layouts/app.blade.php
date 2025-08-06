@@ -62,14 +62,14 @@
 
                     <div class="menu-item text-left">
                         <div class="menu-title">
-                            <a href="{{ route('app') }}">Trang chủ</a>
+                            <a href="{{ route('app') }}">Trang Chủ</a>
                         </div>
                     </div>
 
                     @if(Auth::check() && Auth::user()->role->name === 'admin' )
                         <div class="menu-item text-left">
                             <div class="menu-title">
-                                <a href="{{ route('permission.index') }}">Quản lý quyền</a>
+                                <a href="{{ route('permission.index') }}">Quản Lý Quyền</a>
                             </div>
                         </div>
 
@@ -84,8 +84,8 @@
                     @if (in_array('role.index',$userPermissions ?? []))
                         <div class="menu-item">
                             <div class="menu-title text-left">
-                                <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản lý vai
-                                    trò</a>
+                                <a class="submenu-custom text-left" href="{{ route('role.index') }}"> Quản Lý Vai
+                                    Trò</a>
                             </div>
                         </div>
                     @endif
@@ -93,16 +93,16 @@
                     @if (in_array('user.index',$userPermissions ?? []))
                         <div class="menu-item">
                             <div class="menu-title text-left">
-                                <a href="{{ route('user.index') }}">Quản lý nhân sự </a></div>
+                                <a href="{{ route('user.index') }}">Quản Lý Nhân Sự </a></div>
                         </div>
                     @endif
 
-                    @if (in_array('permission.index',$userPermissions ?? []))
-                        <div class="menu-item">
-                            <div class="menu-title text-left">
-                                <a href="{{ route('permissions.index') }}">Quản lý quyền</a></div>
-                        </div>
-                    @endif
+                    {{--                    @if (in_array('permission.index',$userPermissions ?? []))--}}
+                    {{--                        <div class="menu-item">--}}
+                    {{--                            <div class="menu-title text-left">--}}
+                    {{--                                <a href="{{ route('permissions.index') }}">Quản lý quyền</a></div>--}}
+                    {{--                        </div>--}}
+                    {{--                    @endif--}}
 
                 </div>
 

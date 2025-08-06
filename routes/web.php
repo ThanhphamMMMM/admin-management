@@ -54,7 +54,7 @@ Route::get('permissions/create', [PermissionController::class, 'create'])->name(
 Route::post('permissions/store', [PermissionController::class, 'store'])->name('permission.store');
 Route::get('permissions/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
 Route::post('permissions/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
-Route::get('permissions/destroy/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
+Route::delete('permissions/destroy/{id}', [PermissionController::class, 'destroy'])->name('permission.destroy');
 
 //AUTH
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

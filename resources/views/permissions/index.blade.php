@@ -28,9 +28,9 @@
         <thead>
             <tr class="TableCustom">
                 <th>STT</th>
-                <th>Tên quyền</th>
-                <th>Mô tả quyền</th>
-                <th>Thao tác</th>
+                <th>Tên Quyền</th>
+                <th>Mô Tả Quyền</th>
+                <th>Thao Tác</th>
             </tr>
         </thead>
         @foreach($permissions as $permission)
@@ -53,7 +53,8 @@
                             {{--                        @if(Auth::user()->role->permissions->contains('name', 'role.destroy'))--}}
                             {{--                            --}}
                             {{--                        @endif--}}
-                            <form action="#" method="">
+
+                            <form action="{{ route('permission.destroy',$permission->id) }}" method="POST" >
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger m-2 btn-sm"
