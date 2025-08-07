@@ -1,0 +1,174 @@
+.nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-delete {
+    width: 70px;
+}
+
+.col-xl-9 {
+    margin-top: 150px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #cfcccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.col_custom {
+    margin-top: 123px;
+}
+
+.custem-navbar {
+    margin-left: 400px;
+}
+
+.gap-100px {
+    gap: 100px;
+}
+
+.dropdown {
+    margin-top: 75px;
+}
+
+.dropdown-list {
+    padding: 10px;
+    margin: 15px;
+    background: white;
+    border-radius: 20px;
+}
+
+.dropdown-list a {
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-list:hover .dropdown-item {
+    display: block;
+}
+
+.dropdown-avata {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.dropdown-avata-wrapper:hover .dropdown-avata {
+    display: block;
+}
+
+.dropdown-avata li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.img-custom {
+    width: 60px;
+    height: 60px;
+    margin: 15px;
+}
+
+.offset-custom {
+    right: 0;
+    bottom: 0;
+}
+
+
+.wrapper-custem {
+    margin: -24px -16px -30px;
+}
+
+
+.dropdown-toggle::after {
+    display: none !important;
+    content: none !important;
+}
+
+.header-custom {
+    color: white;
+}
+
+.menu li {
+    list-style: none;
+    margin: 10px;
+}
+
+.menu-container {
+    width: 300px;
+    text-align: center;
+}
+
+.menu-title {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px 0 0 35px;
+    font-size: 20px;
+}
+
+.menu-title a {
+    color: white;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu-custom a {
+    color: white;
+    list-style: none;
+    margin-left: 35px;
+}
+
+
+.menu-item.active .submenu {
+    display: block;
+}
+
+.TableCustom th {
+    text-align: center;
+}
+
+.avatar-custom {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+.cs-offcanvas-cap {
+    height: 103px;
+}
+
+.nav-custom {
+    text-align: right;
+}
+
+
+
+
+

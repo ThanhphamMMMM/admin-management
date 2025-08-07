@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
-@section('title','quản lí user')
+@section('title')
+    quản lí user
+@endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/createhkt.css')}}">
+<link rel="stylesheet" href="{{ asset('css/edit.css')}}">z
 @endsection
 
 
 @section('content')
  <h1>Sửa vai trò</h1>
       <div class="container">
-        
+
                 <form action="{{ route('role.update', $role->id) }}" method="POST">
                     @csrf
                         <div class="item">
