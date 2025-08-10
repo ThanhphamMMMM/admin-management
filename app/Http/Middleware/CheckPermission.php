@@ -24,11 +24,26 @@ class CheckPermission
             abort(403,'Bạn không có quyền truy cập');
         }
 
+
         $user->loadMissing('role.permissions');
 
-        $userPermissions = $user->role()->first()->permissions->pluck('name')->toArray();
+        $userPermissions = $user->role->permissions->pluck('name')->toArray();
 
         $currentRoute = $request->route()->getName();
+
+        $map = [
+            'permission.update' =>'permissions.edit',
+            'permission.store' =>'permissions.create',
+            'user.update' => 'user.edit',
+            'user.store'  => 'user.create',
+            'role.update' => 'role.edit',
+            'role.store'  => 'role.create',
+        ];
+
+        if (isset($map[$currentRoute])) {
+            $currentRoute = $map[$currentRoute];
+        }
+
         if (!in_array($currentRoute, $userPermissions)) {
             abort(403, 'Bạn không có quyền truy cập');
         }

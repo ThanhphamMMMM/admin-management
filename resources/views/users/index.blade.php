@@ -5,11 +5,15 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/indexha.css') }}">
 @endsection
 
 @section('content')
     <h3>Danh sách tài khoản</h3>
+    <form action="{{ route('user.index') }}" method="GET">
+        <input class="btn-search" type="text" name="search" placeholder="Tìm kiếm tên (hoặc) email...">
+        <button class="btn btn-primary m-1 btn-m " type="submit">Tìm Kiếm</button>
+    </form>
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
             {{ session('success') }}

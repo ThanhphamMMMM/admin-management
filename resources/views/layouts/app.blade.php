@@ -11,7 +11,7 @@
           href="{{ asset('theme/vendor/prismjs/plugins/line-numbers/prism-line-numbers.css')}}"/>
     <link rel="stylesheet" href="{{ asset('theme/css/theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/indexha.css') }}">
     @yield('style')
 </head>
 <!-- Body-->

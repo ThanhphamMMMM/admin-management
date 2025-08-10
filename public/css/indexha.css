@@ -40,4 +40,11 @@ th {
 .link-custom {
     font-size: 0;
 }
+.btn-search{
+    border-radius: 11px;
+    height: 40px;
+    padding: 10px;
+    width: 30%;
+    border: 1px solid #ccc;
+}
 

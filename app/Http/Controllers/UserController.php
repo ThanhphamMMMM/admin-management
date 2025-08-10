@@ -15,10 +15,19 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
 
-    public function index(): View
+    public function index(Request $request): View
     {
+        $keyword = $request->input('search');
 
-        $users = User::with(['profile', 'role'])->paginate(8);
+        $users = User::with(['profile', 'role'])
+            ->when($keyword, function ($query, $keyword) {
+                $query->where('users.email', 'like', "%$keyword%")
+                    ->orWhereHas('profile', function ($search) use ($keyword) {
+                        $search->where('full_name', 'like', "%$keyword%");
+                    });
+
+            })
+            ->paginate(8);
         return view('users.index', compact('users'));
     }
 
@@ -62,7 +71,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id): RedirectResponse
     {
-        $id = (int) $id;
+        $id = (int)$id;
         $user = User::findOrFail($id);
 
         $request->validate([

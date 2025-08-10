@@ -43,7 +43,7 @@ class PermissionController extends Controller
             $permissions->description = $request->input('description');
             $permissions->save();
 
-            return redirect()->route('permission.index')->with('success', 'Permission updated successfully');
+            return redirect()->route('permission.index')->with('success', 'Sửa Quyền Thành Công');
         } catch (\Exception $e) {
             return redirect()->route('permission.index')->with('error', $e->getMessage());
         }
@@ -53,7 +53,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::find0rfail($id);
         $permissions->delete();
-        return redirect()->route('permission.index')->with('success', 'Permission deleted successfully');
+        return redirect()->route('permission.index')->with('success', 'Xoá Quyền Thành Công ');
     }
 
 }

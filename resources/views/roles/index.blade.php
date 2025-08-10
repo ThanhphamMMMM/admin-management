@@ -4,7 +4,7 @@
     quản lí role
 @endsection
 @section('style')
-    <link rel="stylesheet" href="{{ asset('css/index.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/indexha.css')}}">
 @endsection
 @section('content')
     <h3>Danh sách vai trò</h3>
