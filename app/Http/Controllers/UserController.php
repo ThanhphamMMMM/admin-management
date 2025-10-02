@@ -37,7 +37,7 @@ class UserController extends Controller
         $permissions = Permission::all();
         return view('users.create', compact('roles', 'permissions'));
     }
-
+                                                                                            
     public function store(StoreUserRequest $request): RedirectResponse
     {
 

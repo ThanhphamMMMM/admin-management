@@ -49,7 +49,7 @@ class ForgotPasswordController extends Controller {
                 }
             );
             if ($status === Password::PASSWORD_RESET) {
-                return redirect()->route('auth.login')->with('status', __($status));
+                return redirect()->route('login')->with('status', __($status));
             }else{
                 return back()->withErrors(['status' => __($status)]);
 

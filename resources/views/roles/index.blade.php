@@ -41,7 +41,7 @@
                 <td class="text-center-custom">
                     @foreach($role->permissions as $permission)
                         <span>
-                            {{$permission->description}}
+                            {{$permission->description}},
                             @if(!$loop->last)
                             @endif
                         </span>

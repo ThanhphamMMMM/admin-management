@@ -19,7 +19,7 @@ class PermissionController extends Controller
     public function create(): View
     {
         $roles = Role::all();
-        return view('permissions.create',compact('roles'));
+        return view('permissions.create', compact('roles'));
     }
 
     // public create permissions
@@ -33,10 +33,10 @@ class PermissionController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         $permissions = Permission::findOrFail($id);
-       $request->validate([
-           'name' => 'required|unique:permissions,name,'.$permissions->id,
-           'description' => 'required',
-       ]);
+        $request->validate([
+            'name' => 'required|unique:permissions,name,' . $permissions->id,
+            'description' => 'required',
+        ]);
 
         try {
             $permissions->name = $request->input('name');
